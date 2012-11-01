@@ -145,6 +145,23 @@ GEM pré-requis
     sudo npm install -g express
     sudo npm install -g coffeescript
 
+## Postgresql
+
+### Installation
+
+    sudo apt-get install postgresql
+
+### Création d'un nouvel utilisateur
+
+    sudo -i -u postgres
+    psql
+    CREATE USER remy;
+    ALTER ROLE remy WITH CREATEDB;
+    CREATE DATABASE first_pq_db OWNER remy;
+    ALTER USER remy WITH ENCRYPTED PASSWORD '****';
+    \q
+    exit
+
 ## SmartGit
 
 - Non-commercial use only
@@ -205,6 +222,27 @@ Ajouter les alias suivants :
 
 ## Installer d'autres logiciels
 
-- Skype : via le site de skype
-- Filezilla : sudo apt-get install filezilla
-- VLC : via la Logithèque
+### Skype
+
+Via le site de skype.
+
+### Filezilla
+
+    sudo apt-get install filezilla
+
+### VLC
+
+    sudo apt-get install vlc
+
+### Heroku
+
+    wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+### Virtualbox
+
+    sudo apt-get install virtualbox
+
+## Autres
+
+- Configurer Twitter avec Gwibber
+- Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
