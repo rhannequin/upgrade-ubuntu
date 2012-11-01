@@ -185,6 +185,15 @@ Ajouter les alias suivants :
 - alias sudo='sudo '
 - alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
+## VIM
+
+    sudo apt-get install vim
+    gedit .vimrc
+    /* Remplir */
+    syntax on
+    set number
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 ## Moniteur système
 
     sudo apt-get install indicator-multiload
@@ -198,3 +207,4 @@ Ajouter les alias suivants :
 
 - Skype : via le site de skype
 - Filezilla : sudo apt-get install filezilla
+- VLC : via la Logithèque
