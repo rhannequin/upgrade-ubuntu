@@ -19,6 +19,15 @@ Aller dans about:config et mettre les paramètres suivants :
 - browser.backspace_action à 0
 - browser.ctrlTab.previews à true
 
+### Installation des plugins
+
+Les plugins suivants sont à installer :
+
+- Firebug
+- Live HTTP Headers
+- Web Developer
+- Adblock Plus
+
 ## LAMP
 
 ### Installation
@@ -30,6 +39,22 @@ Aller dans about:config et mettre les paramètres suivants :
     /* sélectionner "apache2" pour reconfigurer automatiquement */
     /* sélectionner "oui" pour configurer phpmyadmin avec dbconfig-common */
     sudo ln -s /usr/share/phpmyadmin/ /var/www/phpmyadmin
+    sudo service apache2 restart
+
+#### Configuration de PHP
+
+Il est nécessaire de modifier les fichiers php.ini de PHP pour activer le debug. Les paramètres suivants doivent être tels quel :
+- error_reporting = E_ALL
+- display_errors = On
+- display_startup_errors = On
+- track_errors = On
+
+#### Configuration des modules
+
+Il est nécessaire d'activer certains modules avec les commandes ci-dessous :
+
+    sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
+    sudo a2enmod rewrite deflate
     sudo service apache2 restart
 
 ## SSH
