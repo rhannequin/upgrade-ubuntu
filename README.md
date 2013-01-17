@@ -43,11 +43,12 @@ Les plugins suivants sont à installer :
 
 #### Configuration de PHP
 
-Il est nécessaire de modifier les fichiers php.ini de PHP pour activer le debug. Les paramètres suivants doivent être tels quel :
-- error_reporting = E_ALL
-- display_errors = On
-- display_startup_errors = On
-- track_errors = On
+Il est nécessaire de modifier les fichiers php.ini de PHP pour activer le debug. Les paramètres suivants doivent être tels que :
+
+    - error_reporting = E_ALL
+    - display_errors = On
+    - display_startup_errors = On
+    - track_errors = On
 
 #### Configuration des modules
 
@@ -198,15 +199,63 @@ GEM pré-requis
 
 ### Settings
 
-- retirer "$" de word_separators
-- tab_size: 2
-- translate_tabs_to_space: true
-- highlight_line: true
-- shift_tab_unindent: true
+Remplacer le contenu du fichier Preferences > Settings - User par :
+
+    // Settings in here override those in "Default/Preferences.sublime-settings", and
+    // are overridden in turn by file type specific settings.
+    {
+      // Characters that are considered to separate words
+      "word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
+
+      // The number of spaces a tab is considered equal to
+        "tab_size": 2,
+
+        // Set to true to insert spaces when tab is pressed
+        "translate_tabs_to_spaces": true,
+
+        // If enabled, will highlight any line with a caret
+        "highlight_line": true,
+
+        // By default, shift+tab will only unindent if the selection spans
+        // multiple lines. When pressing shift+tab at other times, it'll insert a
+        // tab character - this allows tabs to be inserted when tab_completion is
+        // enabled. Set this to true to make shift+tab always unindent, instead of
+        // inserting tabs.
+        "shift_tab_unindent": true
+    }
+
+Remplacer le contenu du fichier Preferences > Key Binding - User par :
+
+    [
+      // Reindent file
+      { "keys": ["f12"], "command": "reindent"}
+    ]
+
+
 
 ### Package Control
 
-Rentrer la commande : import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+Rentrer la commande :
+
+    import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
+
+Si un problème se produit, ce qui semble être fréquent depuis quelques temps, il faut [télécharger le binaire du package][1]  puis le déplacer dans le dossier "Installed Packages" du répertoire de configuration de Sublime Text (voir `$HOME/.config`). Redémarrer Sublime.
+
+Si la connexion Internet subit un proxy, il faut configurer modifier le fichier Preferences > Package Settings > Package Control > Settings - User par :
+
+    {
+      // An HTTP proxy server to use for requests
+      "http_proxy": "xxx.xxx:xx",
+
+      // An HTTPS proxy server to use for requests - this will inherit from
+      // http_proxy if it is set to "" or null and http_proxy has a value. You
+      // can set this to false to prevent inheriting from http_proxy.
+      "https_proxy": "xxx.xxx:xx",
+
+      // Username and password for both http_proxy and https_proxy
+      "proxy_username": "xxx",
+      "proxy_password": "xxx"
+    }
 
 Installer les packages
 
@@ -271,3 +320,5 @@ Via le site de skype.
 
 - Configurer Twitter avec Gwibber
 - Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
+
+[1]: http://sublime.wbond.net/Package%20Control.sublime-package
