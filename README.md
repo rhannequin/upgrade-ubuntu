@@ -257,7 +257,7 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
       "proxy_password": "xxx"
     }
 
-Installer les packages
+### Installer les packages
 
 - BracketHighlither
 - CoffeeScript
@@ -265,6 +265,43 @@ Installer les packages
 - Markdown Preview
 - Open Recent Files
 - Trailing Spaces
+- DocBlockr
+- Prefixr
+- Emmet
+- Git
+- JSLint (nécessite l'installation manuelle dupackage pyv8-linux64)
+- Sublime Linter
+
+#### Sublime Linter
+
+Éditer les Settings - User de Sublime Linter :
+
+    {
+      // Javascript linter: "gjslint" to use the closure javascript linter (if available),
+      // or either "jshint" or "jslint" to use a built in linter.
+      "javascript_linter": "jslint",
+
+      // A list of command line options to send to gjslint. --nobeep is always sent.
+      "gjslint_options":
+      {
+        "indent": 2,
+        "evil": true,
+        "regexdash": true,
+        "browser": true,
+        "wsh": true,
+        "trailing": true,
+        "sub": true
+      }
+    }
+
+#### Git
+
+Éditer les Settings - User de Sublime Linter :
+
+    {
+      "git_command": "/usr/bin/git"
+    }
+
 
 ## .bashrc
 
