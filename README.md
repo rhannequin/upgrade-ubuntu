@@ -307,11 +307,98 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 
 Ajouter les alias suivants :
 
-- alias ssh-portfolio='ssh ****@****'
-- alias sbl='/home/remy/Logi/Sublime\ Text\ 2/sublime_text'
-- alias dropbox='~/.dropbox-dist/dropboxd'
-- alias sudo='sudo '
-- alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
+    alias ssh-portfolio='ssh ****@****'
+    alias sbl='/home/remy/Logi/Sublime\ Text\ 2/sublime_text'
+    alias dropbox='~/.dropbox-dist/dropboxd'
+    alias sudo='sudo '
+    alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
+
+    # git log with more info and colors
+    alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+    # Recursive directory listing
+    alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
+
+    # Quick apt update-upgrade-clean
+    alias upgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
+
+    # Create python server to this directory
+    alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
+
+    # Get external ip address
+    alias ifconfig-ext='curl ifconfig.me'
+
+    # Quick back directory
+    alias ..1='cd ..'
+    alias ..2='cd ../../../'
+    alias ..3='cd ../../../../'
+    alias ..4='cd ../../../../'
+    alias ..5='cd ../../../../../'
+
+    # Check is alias exists
+    alias al="alias | grep"
+
+    # Ask it politely
+    alias please="sudo"
+
+    # If needed, create command ll
+    alias ll='ls -l --color=auto'
+
+    # Do lastest command with sudo
+    alias sulast='sudo $(history -p !-1)'
+
+    # Quick apt install
+    alias install='sudo apt-get install'
+
+    # Quci push
+    alias gpm="git push origin master"
+
+    # Warn if rm recursive or deleting more than 3 items
+    alias rm='rm -I'
+
+
+    ### Functions ###
+
+    # Create directory and go to it
+    function mcd() {
+      mkdir -p "$1" && cd "$1";
+    }
+
+    # Find string in a file and replace it with another string
+    findreplace(){
+        printf "Search: ${1}\n"
+        printf "Replace: ${2}\n"
+        printf "In: ${3}\n\n"
+
+        find . -name "*${3}" -type f | xargs perl -pi -e 's/${1}/${2}/g'
+    }
+
+    # Quick exctract
+    extract () {
+        if [ -f $1 ] ; then
+          case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)     echo "'$1' cannot be extracted via extract()" ;;
+             esac
+         else
+             echo "'$1' is not a valid file"
+         fi
+    }
+
+    # Tail with search highlight
+    t() {
+        tail -f $1 | perl -pe "s/$2/\e[1;31;43m$&\e[0m/g"
+    }
 
 ## VIM
 
