@@ -90,7 +90,7 @@ Ajouter le texte suivant :
       st = status
       br = branch
     [github]
-      user = RemyHannequin
+      user = rhannequin
 
 ### Vérification
 
@@ -100,9 +100,11 @@ Ajouter le texte suivant :
 
 ## Chrome
 
+[Télécharger](https://www.google.com/intl/fr/chrome/browser/) le .deb 32 ou 64 bit et l'exécuter.
+
 ## Java
 
-Télécharger JAVA SE 7u9 JDK sur http://www.oracle.com/technetwork/java/javase/downloads/index.html
+[Télécharger](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u9 JDK.
 
     sudo mkdir /usr/lib/jvm
     cd /usr/lib/jvm
@@ -161,7 +163,7 @@ GEM pré-requis
     cd ~/workspace
     git clone https://github.com/joyent/node.git
     cd node
-    git checkout v0.8.14
+    git checkout v0.10.1
     ./configure
     make
     sudo make install
@@ -169,7 +171,11 @@ GEM pré-requis
 ### Ajout de modules
 
     sudo npm install -g express
-    sudo npm install -g coffeescript
+    sudo npm install -g coffee-script
+    sudo npm install -g bower
+    sudo npm install -g grunt-cli
+    sudo npm install -g jslint
+    sudo npm install -g nodemon
 
 ## Postgresql
 
@@ -181,10 +187,10 @@ GEM pré-requis
 
     sudo -i -u postgres
     psql
-    CREATE USER remy;
-    ALTER ROLE remy WITH CREATEDB;
-    CREATE DATABASE first_pq_db OWNER remy;
-    ALTER USER remy WITH ENCRYPTED PASSWORD '****';
+    CREATE USER rhannequin;
+    ALTER ROLE rhannequin WITH CREATEDB;
+    CREATE DATABASE first_pq_db OWNER rhannequin;
+    ALTER USER rhannequin WITH ENCRYPTED PASSWORD '****';
     \q
     exit
 
@@ -239,7 +245,7 @@ Rentrer la commande :
 
     import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
 
-Si un problème se produit, ce qui semble être fréquent depuis quelques temps, il faut [télécharger le binaire du package][1]  puis le déplacer dans le dossier "Installed Packages" du répertoire de configuration de Sublime Text (voir `$HOME/.config`). Redémarrer Sublime.
+Si un problème se produit, ce qui semble être fréquent depuis quelques temps, il faut [télécharger le binaire du package](http://sublime.wbond.net/Package%20Control.sublime-package)  puis le déplacer dans le dossier "Installed Packages" du répertoire de configuration de Sublime Text (voir `$HOME/.config`). Redémarrer Sublime.
 
 Si la connexion Internet subit un proxy, il faut configurer modifier le fichier Preferences > Package Settings > Package Control > Settings - User par :
 
@@ -308,7 +314,7 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 Ajouter les alias suivants :
 
     alias ssh-portfolio='ssh ****@****'
-    alias sbl='/home/remy/Logi/Sublime\ Text\ 2/sublime_text'
+    alias sbl='~/Logi/Sublime\ Text\ 2/sublime_text'
     alias dropbox='~/.dropbox-dist/dropboxd'
     alias sudo='sudo '
     alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
@@ -436,6 +442,10 @@ Via le site de skype.
 
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
+### OpenVPN
+
+    sudo apt-get install openvpn
+
 ### Virtualbox
 
     sudo apt-get install virtualbox
@@ -444,5 +454,3 @@ Via le site de skype.
 
 - Configurer Twitter avec Gwibber
 - Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
-
-[1]: http://sublime.wbond.net/Package%20Control.sublime-package
