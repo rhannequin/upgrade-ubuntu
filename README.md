@@ -96,7 +96,7 @@ Ajouter le texte suivant :
 
     mkdir workspace github bitbucket
     cd github
-    git clone git@github.com:RemyHannequin/upgrade-ubuntu.git
+    git clone git@github.com:rhannequin/upgrade-ubuntu.git
 
 ## Chrome
 
@@ -214,20 +214,23 @@ Remplacer le contenu du fichier Preferences > Settings - User par :
       "word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
 
       // The number of spaces a tab is considered equal to
-        "tab_size": 2,
+      "tab_size": 2,
 
-        // Set to true to insert spaces when tab is pressed
-        "translate_tabs_to_spaces": true,
+      // Set to true to insert spaces when tab is pressed
+      "translate_tabs_to_spaces": true,
 
-        // If enabled, will highlight any line with a caret
-        "highlight_line": true,
+      // If enabled, will highlight any line with a caret
+      "highlight_line": true,
 
-        // By default, shift+tab will only unindent if the selection spans
-        // multiple lines. When pressing shift+tab at other times, it'll insert a
-        // tab character - this allows tabs to be inserted when tab_completion is
-        // enabled. Set this to true to make shift+tab always unindent, instead of
-        // inserting tabs.
-        "shift_tab_unindent": true
+      // By default, shift+tab will only unindent if the selection spans
+      // multiple lines. When pressing shift+tab at other times, it'll insert a
+      // tab character - this allows tabs to be inserted when tab_completion is
+      // enabled. Set this to true to make shift+tab always unindent, instead of
+      // inserting tabs.
+      "shift_tab_unindent": true,
+
+      // Columns in which to display vertical rulers
+      "rulers": [80]
     }
 
 Remplacer le contenu du fichier Preferences > Key Binding - User par :
