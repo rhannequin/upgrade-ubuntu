@@ -280,6 +280,10 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 - Git
 - JSLint (nécessite l'installation manuelle dupackage pyv8-linux64)
 - Sublime Linter
+- SmartMarkdown
+- SideBarEnhancements
+- Alignment
+- AdvancedNewFile
 
 #### Sublime Linter
 
