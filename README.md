@@ -27,6 +27,9 @@ Les plugins suivants sont à installer :
 - Live HTTP Headers
 - Web Developer
 - Adblock Plus
+- JSONView
+- Pocket
+- Feedly
 
 ## LAMP
 
@@ -102,6 +105,8 @@ Ajouter le texte suivant :
 
 [Télécharger](https://www.google.com/intl/fr/chrome/browser/) le .deb 32 ou 64 bit et l'exécuter.
 
+TODO: ctrl+tab, backspace
+
 ## Java
 
 [Télécharger](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u9 JDK.
@@ -144,17 +149,21 @@ Installation de aptitude, samba et curl
 
 Installation des pré-requis pour rails
 
-    sudo apt-get install libyaml-dev zlibb1g-dev libcurl4-openssl-dev libsqlite3-dev g++ gcc
+    sudo apt-get install libyaml-dev zlib1g-dev libcurl4-openssl-dev libsqlite3-dev g++ gcc
 
 Installation de RVM avec Ruby
 
     \curl -L https://get.rvm.io | bash -s stable --ruby
+    rvm requirements
+    /* Installer les paquets requis */
 
-## Rails
+Si Ruby non installé
 
-GEM pré-requis
+    rvm install 1.9.3 && rvm install 2.0.0
 
-    gem install therubyracer execjs
+## Quelques gem à installer
+
+    gem install therubyracer execjs compass rails sinatra
 
 ## Node
 
@@ -170,12 +179,7 @@ GEM pré-requis
 
 ### Ajout de modules
 
-    sudo npm install -g express
-    sudo npm install -g coffee-script
-    sudo npm install -g bower
-    sudo npm install -g grunt-cli
-    sudo npm install -g jslint
-    sudo npm install -g nodemon
+    sudo npm install -g express coffee-script bower grunt-cli jslint nodemon
 
 ## Postgresql
 
@@ -193,6 +197,16 @@ GEM pré-requis
     ALTER USER rhannequin WITH ENCRYPTED PASSWORD '****';
     \q
     exit
+
+## Mongo
+
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+    sudo nano /etc/apt/sources.list.d/10gen.list
+    /* Ecrire : */
+    deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
+    /* Fin */
+    sudo apt-get update
+    sudo apt-get install mongodb-10gen
 
 ## SmartGit
 
@@ -278,7 +292,7 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 - Prefixr
 - Emmet
 - Git
-- JSLint (nécessite l'installation manuelle dupackage pyv8-linux64)
+- JSLint (nécessite l'installation manuelle du package pyv8-linux64)
 - Sublime Linter
 - SmartMarkdown
 - SideBarEnhancements
@@ -422,6 +436,24 @@ Ajouter les alias suivants :
     set number
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+## OhMyZSH
+
+    sudo apt-get install zsh
+    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    chsh -s $(which zsh) # Set ZSH default shell
+
+Ajouter ces éléments au ~/.zshrc
+
+    # Choisir le theme `candy`
+    # Ajouter la version 1.9.3 de ruby au PATH :
+    # (remplacer `392` si besoin)
+    /home/remy/.rvm/gems/ruby-1.9.3-p392/bin:/home/remy/.rvm/gems/ruby-1.9.3-p392@global/bin:/home/remy/.rvm/rubies/ruby-1.9.3-p392/bin
+    # Ajouter les path RVM :
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
+    # Ajouter tous les alias de ~/.bashrc
+
+
 ## Moniteur système
 
     sudo apt-get install indicator-multiload
@@ -457,7 +489,11 @@ Via le site de skype.
 
     sudo apt-get install virtualbox
 
+### Raccourcis Unity
+
+    sudo apt-get install alacarte
+
 ## Autres
 
-- Configurer Twitter avec Gwibber
+- Configurer Twitter avec Gwibber (l'installer si pas déjà fait)
 - Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
