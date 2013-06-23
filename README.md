@@ -27,6 +27,9 @@ Les plugins suivants sont à installer :
 - Live HTTP Headers
 - Web Developer
 - Adblock Plus
+- Pocket
+- JSONView
+- feedly
 
 ## LAMP
 
@@ -100,6 +103,12 @@ Ajouter le texte suivant :
 
 ## Chrome
 
+    /* 32 bits */
+    $ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_i386.deb
+
+    /* 64 bits */
+    $ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_amd64.deb
+
 [Télécharger](https://www.google.com/intl/fr/chrome/browser/) le .deb 32 ou 64 bit et l'exécuter.
 
 ## Java
@@ -136,7 +145,18 @@ Puis lancer
 
     ~/.dropbox-dist/dropboxd
 
-## RVM
+## Ruby avec rbenv
+
+    git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+    source ~/.zshrc
+    echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+    source ~/.zshrc
+    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+    rbenv install 1.9.3-p392
+    rbenv global 1.9.3-p392
+
+## Ruby avec RVM
 
 Installation de aptitude, samba et curl
 
@@ -461,3 +481,16 @@ Via le site de skype.
 
 - Configurer Twitter avec Gwibber
 - Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
+
+### Nautilus à partir de 13.04
+
+Activer le Backspace pour revenir en arrière :
+
+    echo '(gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")' >> ~/.config/nautilus/accels
+
+
+## Points à éclaircir :
+
+- Skype marche malgré pas de version pour 13.04 ?
+- Pas de notification pour Friends-app
+- Vérifier que install oh-my-zsh marche tout le temps
