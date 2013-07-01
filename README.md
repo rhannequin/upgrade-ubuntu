@@ -30,6 +30,7 @@ Les plugins suivants sont à installer :
 - Pocket
 - JSONView
 - feedly
+- Firefox OS Simulator
 
 ## LAMP
 
