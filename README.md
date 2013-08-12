@@ -4,8 +4,10 @@
 
 Créer un dossier workspace dans le home.
 
-    mkdir ~/workspace
-    sudo ln -s ~/workspace/ /workspace
+```
+mkdir ~/workspace
+sudo ln -s ~/workspace/ /workspace
+```
 
 ## Firefox
 
@@ -36,14 +38,16 @@ Les plugins suivants sont à installer :
 
 ### Installation
 
-    sudo apt-get update
-    sudo apt-get install lamp-server^
-    sudo ln -s ~/workspace/ /var/www/workspace
-    sudo apt-get install phpmyadmin
-    /* sélectionner "apache2" pour reconfigurer automatiquement */
-    /* sélectionner "oui" pour configurer phpmyadmin avec dbconfig-common */
-    sudo ln -s /usr/share/phpmyadmin/ /var/www/phpmyadmin
-    sudo service apache2 restart
+```
+sudo apt-get update
+sudo apt-get install lamp-server^
+sudo ln -s ~/workspace/ /var/www/workspace
+sudo apt-get install phpmyadmin
+/* sélectionner "apache2" pour reconfigurer automatiquement */
+/* sélectionner "oui" pour configurer phpmyadmin avec dbconfig-common */
+sudo ln -s /usr/share/phpmyadmin/ /var/www/phpmyadmin
+sudo service apache2 restart
+```
 
 #### Configuration de PHP
 
@@ -58,14 +62,18 @@ Il est nécessaire de modifier les fichiers php.ini de PHP pour activer le debug
 
 Il est nécessaire d'activer certains modules avec les commandes ci-dessous :
 
-    sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
-    sudo a2enmod rewrite deflate
-    sudo service apache2 restart
+```
+sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
+sudo a2enmod rewrite deflate
+sudo service apache2 restart
+```
 
 ## SSH
 
-    cd
-    ssh-keygen -t rsa
+```
+cd
+ssh-keygen -t rsa
+```
 
 Se connecter à Github et Bitbucket et ajouter la clé publique SSH dans l'administration de compte.
 
@@ -81,34 +89,40 @@ Se connecter à Github et Bitbucket et ajouter la clé publique SSH dans l'admin
 
 Ajouter le texte suivant :
 
-    [color]
-      diff = auto
-      status = auto
-      branch = auto
-    [user]
-      name = Rémy Hannequin
-      email = ***@***
-    [alias]
-      ci = commit
-      co = checkout
-      st = status
-      br = branch
-    [github]
-      user = rhannequin
+```
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[user]
+  name = Rémy Hannequin
+  email = ***@***
+[alias]
+  ci = commit
+  co = checkout
+  st = status
+  br = branch
+[github]
+  user = rhannequin
+```
 
 ### Vérification
 
-    mkdir workspace github bitbucket
-    cd github
-    git clone git@github.com:rhannequin/upgrade-ubuntu.git
+```
+mkdir workspace github bitbucket
+cd github
+git clone git@github.com:rhannequin/upgrade-ubuntu.git
+```
 
 ## Chrome
 
-    /* 32 bits */
-    $ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_i386.deb
+```
+/* 32 bits */
+$ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_i386.deb
 
-    /* 64 bits */
-    $ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_amd64.deb
+/* 64 bits */
+$ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_amd64.deb
+```
 
 [Télécharger](https://www.google.com/intl/fr/chrome/browser/) le .deb 32 ou 64 bit et l'exécuter.
 
@@ -118,19 +132,21 @@ TODO: ctrl+tab, backspace
 
 [Télécharger](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u9 JDK.
 
-    sudo mkdir /usr/lib/jvm
-    cd /usr/lib/jvm
-    sudo tar xvzf ~/jre-7u4-linux-*.tar.gz
-    sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_04/bin/java 1
-    sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_04/bin/javac 1
-    sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_04/bin/javaws 1
-    /* Pour 64 bits */
-    /* sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/amd64/libjavaplugin_jni.so 1 */
-    sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/i586/libjavaplugin_jni.so 1
-    sudo update-alternatives --config java
-    sudo update-alternatives --config javac
-    sudo update-alternatives --config javaws
-    sudo update-alternatives --config mozilla-javaplugin.so
+```
+sudo mkdir /usr/lib/jvm
+cd /usr/lib/jvm
+sudo tar xvzf ~/jre-7u4-linux-*.tar.gz
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_04/bin/java 1
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_04/bin/javac 1
+sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_04/bin/javaws 1
+/* Pour 64 bits */
+/* sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/amd64/libjavaplugin_jni.so 1 */
+sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/i586/libjavaplugin_jni.so 1
+sudo update-alternatives --config java
+sudo update-alternatives --config javac
+sudo update-alternatives --config javaws
+sudo update-alternatives --config mozilla-javaplugin.so
+```
 
 ## Adobe Flash
 
@@ -150,14 +166,16 @@ Puis lancer
 
 ## Ruby avec rbenv
 
-    git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-    source ~/.zshrc
-    echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-    source ~/.zshrc
-    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-    rbenv install 1.9.3-p392
-    rbenv global 1.9.3-p392
+```
+git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+rbenv install 1.9.3-p392
+rbenv global 1.9.3-p392
+```
 
 ## Ruby avec RVM
 
@@ -187,13 +205,15 @@ Si Ruby non installé
 
 ### Installation
 
-    cd ~/workspace
-    git clone https://github.com/joyent/node.git
-    cd node
-    git checkout v0.10.1
-    ./configure
-    make
-    sudo make install
+```
+cd ~/workspace
+git clone https://github.com/joyent/node.git
+cd node
+git checkout v0.10.1
+./configure
+make
+sudo make install
+```
 
 ### Ajout de modules
 
@@ -207,24 +227,28 @@ Si Ruby non installé
 
 ### Création d'un nouvel utilisateur
 
-    sudo -i -u postgres
-    psql
-    CREATE USER rhannequin;
-    ALTER ROLE rhannequin WITH CREATEDB;
-    CREATE DATABASE first_pq_db OWNER rhannequin;
-    ALTER USER rhannequin WITH ENCRYPTED PASSWORD '****';
-    \q
-    exit
+```
+sudo -i -u postgres
+psql
+CREATE USER rhannequin;
+ALTER ROLE rhannequin WITH CREATEDB;
+CREATE DATABASE first_pq_db OWNER rhannequin;
+ALTER USER rhannequin WITH ENCRYPTED PASSWORD '****';
+\q
+exit
+```
 
 ## Mongo
 
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-    sudo nano /etc/apt/sources.list.d/10gen.list
-    /* Ecrire : */
-    deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
-    /* Fin */
-    sudo apt-get update
-    sudo apt-get install mongodb-10gen
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+sudo nano /etc/apt/sources.list.d/10gen.list
+/* Ecrire : */
+deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
+/* Fin */
+sudo apt-get update
+sudo apt-get install mongodb-10gen
+```
 
 ## SmartGit
 
@@ -239,38 +263,42 @@ Si Ruby non installé
 
 Remplacer le contenu du fichier Preferences > Settings - User par :
 
-    // Settings in here override those in "Default/Preferences.sublime-settings", and
-    // are overridden in turn by file type specific settings.
-    {
-      // Characters that are considered to separate words
-      "word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
+```javascript
+// Settings in here override those in "Default/Preferences.sublime-settings", and
+// are overridden in turn by file type specific settings.
+{
+  // Characters that are considered to separate words
+  "word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
 
-      // The number of spaces a tab is considered equal to
-      "tab_size": 2,
+  // The number of spaces a tab is considered equal to
+  "tab_size": 2,
 
-      // Set to true to insert spaces when tab is pressed
-      "translate_tabs_to_spaces": true,
+  // Set to true to insert spaces when tab is pressed
+  "translate_tabs_to_spaces": true,
 
-      // If enabled, will highlight any line with a caret
-      "highlight_line": true,
+  // If enabled, will highlight any line with a caret
+  "highlight_line": true,
 
-      // By default, shift+tab will only unindent if the selection spans
-      // multiple lines. When pressing shift+tab at other times, it'll insert a
-      // tab character - this allows tabs to be inserted when tab_completion is
-      // enabled. Set this to true to make shift+tab always unindent, instead of
-      // inserting tabs.
-      "shift_tab_unindent": true,
+  // By default, shift+tab will only unindent if the selection spans
+  // multiple lines. When pressing shift+tab at other times, it'll insert a
+  // tab character - this allows tabs to be inserted when tab_completion is
+  // enabled. Set this to true to make shift+tab always unindent, instead of
+  // inserting tabs.
+  "shift_tab_unindent": true,
 
-      // Columns in which to display vertical rulers
-      "rulers": [80]
-    }
+  // Columns in which to display vertical rulers
+  "rulers": [80]
+}
+```
 
 Remplacer le contenu du fichier Preferences > Key Binding - User par :
 
-    [
-      // Reindent file
-      { "keys": ["f12"], "command": "reindent"}
-    ]
+```javascript
+[
+  // Reindent file
+  { "keys": ["f12"], "command": "reindent"}
+]
+```
 
 
 
@@ -284,19 +312,21 @@ Si un problème se produit, ce qui semble être fréquent depuis quelques temps,
 
 Si la connexion Internet subit un proxy, il faut configurer modifier le fichier Preferences > Package Settings > Package Control > Settings - User par :
 
-    {
-      // An HTTP proxy server to use for requests
-      "http_proxy": "xxx.xxx:xx",
+```javascript
+{
+  // An HTTP proxy server to use for requests
+  "http_proxy": "xxx.xxx:xx",
 
-      // An HTTPS proxy server to use for requests - this will inherit from
-      // http_proxy if it is set to "" or null and http_proxy has a value. You
-      // can set this to false to prevent inheriting from http_proxy.
-      "https_proxy": "xxx.xxx:xx",
+  // An HTTPS proxy server to use for requests - this will inherit from
+  // http_proxy if it is set to "" or null and http_proxy has a value. You
+  // can set this to false to prevent inheriting from http_proxy.
+  "https_proxy": "xxx.xxx:xx",
 
-      // Username and password for both http_proxy and https_proxy
-      "proxy_username": "xxx",
-      "proxy_password": "xxx"
-    }
+  // Username and password for both http_proxy and https_proxy
+  "proxy_username": "xxx",
+  "proxy_password": "xxx"
+}
+```
 
 ### Installer les packages
 
@@ -310,9 +340,7 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 - Prefixr
 - Emmet
 - Git
-- JSLint (nécessite l'installation manuelle du package pyv8-linux64)
 - Sublime Linter
-- SmartMarkdown
 - SideBarEnhancements
 - Alignment
 - AdvancedNewFile
@@ -320,130 +348,132 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 #### Sublime Linter
 
 Éditer les Settings - User de Sublime Linter :
-
-    {
-      // Javascript linter: "gjslint" to use the closure javascript linter (if available),
-      // or either "jshint" or "jslint" to use a built in linter.
-      "javascript_linter": "jslint",
-
-      // A list of command line options to send to gjslint. --nobeep is always sent.
-      "gjslint_options":
-      {
-        "indent": 2,
-        "evil": true,
-        "regexdash": true,
-        "browser": true,
-        "wsh": true,
-        "trailing": true,
-        "sub": true
-      }
-    }
+```javascript
+{
+  "jshint_options":
+  {
+    "indent": 2,
+    "evil": true,
+    "regexdash": true,
+    "browser": true,
+    "wsh": true,
+    "trailing": true,
+    "sub": true,
+    "asi": true,
+    "lastsemic":true
+  }
+}
+```
 
 #### Git
 
 Éditer les Settings - User de Sublime Linter :
 
-    {
-      "git_command": "/usr/bin/git"
-    }
+```javascript
+{
+  "git_command": "/usr/bin/git"
+}
+```
 
 
 ## .bashrc
 
 Ajouter les alias suivants :
 
-    alias ssh-portfolio='ssh ****@****'
-    alias sbl='~/Logi/Sublime\ Text\ 2/sublime_text'
-    alias dropbox='~/.dropbox-dist/dropboxd'
-    alias sudo='sudo '
-    alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
+```
+alias ssh-portfolio='ssh ****@****'
+alias sbl='~/Logi/Sublime\ Text\ 2/sublime_text'
+alias dropbox='~/.dropbox-dist/dropboxd'
+alias sudo='sudo '
+alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
-    # git log with more info and colors
-    alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# git log with more info and colors
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-    # Recursive directory listing
-    alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
+# Recursive directory listing
+alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
 
-    # Quick apt update-upgrade-clean
-    alias upgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
+# Quick apt update-upgrade-clean
+alias upgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
 
-    # Create python server to this directory
-    alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
+# Create python server to this directory
+alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
-    # Get external ip address
-    alias ifconfig-ext='curl ifconfig.me'
+# Get external ip address
+alias ifconfig-ext='curl ifconfig.me'
 
-    # Quick back directory
-    alias ..1='cd ..'
-    alias ..2='cd ../../../'
-    alias ..3='cd ../../../../'
-    alias ..4='cd ../../../../'
-    alias ..5='cd ../../../../../'
+# Quick back directory
+alias ..1='cd ..'
+alias ..2='cd ../../../'
+alias ..3='cd ../../../../'
+alias ..4='cd ../../../../'
+alias ..5='cd ../../../../../'
 
-    # Check is alias exists
-    alias al="alias | grep"
+# Check is alias exists
+alias al="alias | grep"
 
-    # Ask it politely
-    alias please="sudo"
+# Ask it politely
+alias please="sudo"
 
-    # If needed, create command ll
-    alias ll='ls -l --color=auto'
+# If needed, create command ll
+alias ll='ls -l --color=auto'
 
-    # Do lastest command with sudo
-    alias sulast='sudo $(history -p !-1)'
+# Do lastest command with sudo
+alias sulast='sudo $(history -p !-1)'
 
-    # Quick apt install
-    alias install='sudo apt-get install'
+# Quick apt install
+alias install='sudo apt-get install'
 
-    # Quci push
-    alias gpm="git push origin master"
+# Quci push
+alias gpm="git push origin master"
 
-    # Warn if rm recursive or deleting more than 3 items
-    alias rm='rm -I'
+# Warn if rm recursive or deleting more than 3 items
+alias rm='rm -I'
 
 
-    ### Functions ###
+### Functions ###
 
-    # Create directory and go to it
-    function mcd() {
-      mkdir -p "$1" && cd "$1";
-    }
+# Create directory and go to it
+function mcd() {
+  mkdir -p "$1" && cd "$1";
+}
 
-    # Find string in a file and replace it with another string
-    findreplace(){
-        printf "Search: ${1}\n"
-        printf "Replace: ${2}\n"
-        printf "In: ${3}\n\n"
+# Find string in a file and replace it with another string
+findreplace(){
+    printf "Search: ${1}\n"
+    printf "Replace: ${2}\n"
+    printf "In: ${3}\n\n"
 
-        find . -name "*${3}" -type f | xargs perl -pi -e 's/${1}/${2}/g'
-    }
+    find . -name "*${3}" -type f | xargs perl -pi -e 's/${1}/${2}/g'
+}
 
-    # Quick exctract
-    extract () {
-        if [ -f $1 ] ; then
-          case $1 in
-            *.tar.bz2)   tar xjf $1     ;;
-            *.tar.gz)    tar xzf $1     ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       unrar e $1     ;;
-            *.gz)        gunzip $1      ;;
-            *.tar)       tar xf $1      ;;
-            *.tbz2)      tar xjf $1     ;;
-            *.tgz)       tar xzf $1     ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *)     echo "'$1' cannot be extracted via extract()" ;;
-             esac
-         else
-             echo "'$1' is not a valid file"
-         fi
-    }
+# Quick exctract
+extract () {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
 
-    # Tail with search highlight
-    t() {
-        tail -f $1 | perl -pe "s/$2/\e[1;31;43m$&\e[0m/g"
-    }
+# Tail with search highlight
+t() {
+    tail -f $1 | perl -pe "s/$2/\e[1;31;43m$&\e[0m/g"
+}
+```
 
 ## VIM
 
@@ -462,14 +492,16 @@ Ajouter les alias suivants :
 
 Ajouter ces éléments au ~/.zshrc
 
-    # Choisir le theme `candy`
-    # Ajouter la version 1.9.3 de ruby au PATH :
-    # (remplacer `392` si besoin)
-    /home/remy/.rvm/gems/ruby-1.9.3-p392/bin:/home/remy/.rvm/gems/ruby-1.9.3-p392@global/bin:/home/remy/.rvm/rubies/ruby-1.9.3-p392/bin
-    # Ajouter les path RVM :
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
-    # Ajouter tous les alias de ~/.bashrc
+```
+# Choisir le theme `candy`
+# Ajouter la version 1.9.3 de ruby au PATH :
+# (remplacer `392` si besoin)
+/home/remy/.rvm/gems/ruby-1.9.3-p392/bin:/home/remy/.rvm/gems/ruby-1.9.3-p392@global/bin:/home/remy/.rvm/rubies/ruby-1.9.3-p392/bin
+# Ajouter les path RVM :
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
+# Ajouter tous les alias de ~/.bashrc
+```
 
 
 ## Moniteur système
