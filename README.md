@@ -209,10 +209,14 @@ Si Ruby non installé
 cd ~/workspace
 git clone https://github.com/joyent/node.git
 cd node
-git checkout v0.10.1
+git checkout v0.10.18
 ./configure
 make
 sudo make install
+
+/* make peut potentiellement remonter des erreurs, si c'est le cas : */
+sudo apt-get install g++
+/* puis relancer make et make install */
 ```
 
 ### Ajout de modules
@@ -478,11 +482,59 @@ t() {
 ## VIM
 
     sudo apt-get install vim
-    gedit .vimrc
+    vim .vimrc
     /* Remplir */
-    syntax on
-    set number
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    autocmd BufNewFile,BufRead *.json set ft=javascript
+    scriptencoding utf-8
+
+    set listchars=nbsp:¤,tab:>-,extends:>,precedes:<,trail:·
+    set list
+
+    set expandtab
+    set tabstop=2
+    set shiftwidth=2
+    set softtabstop=2
+    set showmatch
+
+    " Prend pas en compte la casse dans la recherche
+    set ic
+
+    " Si on utilise une majuscule dans la recherche, celle-ci redevient sensible à la casse
+    set smartcase
+
+    " Supprime les blanc en fin de ligne avec la commande _s
+    nmap _s :%s/\s\+$//<CR>
+
+    " check php syntax with Ctrl + L
+    autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
+    autocmd FileType phtml noremap &lt;
+
+    " Use Q for formatting the current paragraph (or selection)
+    vmap Q gq
+    nmap Q gqap
+
+    set encoding=utf-8
+    set fileencoding=utf-8
+
+    if has("autocmd")
+      filetype plugin indent on
+      autocmd FileType text setlocal textwidth=78
+
+    " always jump to last edit position when opening a file
+      autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+    endif
+
+    " Allow saving of files as sudo when I forgot to start vim using sudo.
+    cmap w!! w !sudo tee > /dev/null %
+
+    " Reload .vimrc when we edit it
+    au! BufWritePost .vimrc source %
+
+Plugin de commentaire pour vim (à ajouter dans ~/.vim/plugin/)
+http://www.vim.org/scripts/script.php?script_id=1218
 
 ## OhMyZSH
 
