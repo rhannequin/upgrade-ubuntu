@@ -1,10 +1,8 @@
 # Upgrade Ubuntu
 
-Hey frogs, there is a French version of this project: [README.fr.md](https://github.com/rhannequin/upgrade-ubuntu/blob/master/README.fr.md)
+## Pré-requis
 
-## Requirements
-
-Create a `workspace` folder into $HOME.
+Créer un dossier `workspace` dans le home.
 
 ```
 mkdir ~/workspace
@@ -13,17 +11,17 @@ sudo ln -s ~/workspace/ /workspace
 
 ## Firefox
 
-- Change homepage
-- Configure Sync
+- changer l'adresse Home
+- configurer Sync
 
-### Keyboard configuration
+### Configuration des touches
 
-Go to *about:config* and update the followings :
+Aller dans *about:config* et mettre les paramètres suivants :
 
-- browser.backspace_action to `0`
-- browser.ctrlTab.previews to `true`
+- browser.backspace_action à `0`
+- browser.ctrlTab.previews à `true`
 
-### Plugins
+### Installation des plugins
 
 - Firebug
 - Live HTTP Headers
@@ -37,22 +35,22 @@ Go to *about:config* and update the followings :
 
 ## LAMP
 
-### Install
+### Installation
 
 ```
 sudo apt-get update
 sudo apt-get install lamp-server^
 sudo ln -s ~/workspace/ /var/www/workspace
 sudo apt-get install phpmyadmin
-# select "apache2" tp configure it automatically
-# select "yes" to configure phpmyadmin with dbconfig-common
+/* sélectionner "apache2" pour reconfigurer automatiquement */
+/* sélectionner "oui" pour configurer phpmyadmin avec dbconfig-common */
 sudo ln -s /usr/share/phpmyadmin/ /var/www/phpmyadmin
 sudo service apache2 restart
 ```
 
-#### PHP configuration
+#### Configuration de PHP
 
-You need to edit `php.ini` files from PHP to activate debug. The following parameters must be like this:
+Il est nécessaire de modifier les fichiers php.ini de PHP pour activer le debug. Les paramètres suivants doivent être tels que :
 
 ```
 - error_reporting = E_ALL
@@ -61,9 +59,9 @@ You need to edit `php.ini` files from PHP to activate debug. The following param
 - track_errors = On
 ```
 
-#### Modules
+#### Configuration des modules
 
-You must activate the following modules:
+Il est nécessaire d'activer certains modules avec les commandes ci-dessous :
 
 ```
 sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
@@ -78,11 +76,11 @@ cd ~
 ssh-keygen -t rsa
 ```
 
-/!\ Don't forget to add you public key to your Github and/or Bitbucket accounts.
+/!\ Se connecter à Github et Bitbucket et ajouter la clé publique SSH dans l'administration de compte.
 
 ## GIT
 
-### Install
+### Installation
 
 ```
 sudo apt-get install git
@@ -94,7 +92,7 @@ sudo apt-get install git
 gedit ~/.gitconfig
 ```
 
-Add the following instructions:
+Ajouter le texte suivant :
 
 ```
 [color]
@@ -113,7 +111,7 @@ Add the following instructions:
   user = rhannequin
 ```
 
-### Check it
+### Vérification
 
 ```
 mkdir workspace github bitbucket
@@ -131,13 +129,13 @@ $ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/ude
 $ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_amd64.deb
 ```
 
-[Download](https://www.google.com/intl/fr/chrome/browser/) .deb 32 or 64 bit and execute it.
+[Télécharger](https://www.google.com/intl/fr/chrome/browser/) le .deb 32 ou 64 bit et l'exécuter.
 
 TODO: ctrl+tab, backspace
 
 ## Java
 
-[Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u9 JDK.
+[Télécharger](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u9 JDK.
 
 ```
 sudo mkdir /usr/lib/jvm
@@ -146,8 +144,8 @@ sudo tar xvzf ~/jre-7u4-linux-*.tar.gz
 sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_04/bin/java 1
 sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_04/bin/javac 1
 sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_04/bin/javaws 1
-# 64 bits only
-# sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/amd64/libjavaplugin_jni.so 1
+/* Pour 64 bits */
+/* sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/amd64/libjavaplugin_jni.so 1 */
 sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/i586/libjavaplugin_jni.so 1
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
@@ -159,19 +157,19 @@ sudo update-alternatives --config mozilla-javaplugin.so
 
 ## Dropbox
 
-32 bits
+Pour 32 bits
 
     cd ~ && wget -0 - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 
-64 bits
+Pour 64 bits
 
     cd ~ && wget -0 - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
-Start dropbow
+Puis lancer
 
     ~/.dropbox-dist/dropboxd
 
-## Ruby with rbenv
+## Ruby avec rbenv
 
 ```
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -184,33 +182,33 @@ rbenv install 1.9.3-p392
 rbenv global 1.9.3-p392
 ```
 
-## Ruby with RVM
+## Ruby avec RVM
 
-aptitude, samba et curl installation
+Installation de aptitude, samba et curl
 
     sudo apt-get install aptitude samba curl
 
-Requirements for Rails
+Installation des pré-requis pour rails
 
     sudo apt-get install libyaml-dev zlib1g-dev libcurl4-openssl-dev libsqlite3-dev g++ gcc
 
-Install RVM with Ruby
+Installation de RVM avec Ruby
 
     \curl -L https://get.rvm.io | bash -s stable --ruby
     rvm requirements
-    # Install required packages
+    /* Installer les paquets requis */
 
-Of Ruby is not installed
+Si Ruby non installé
 
     rvm install 1.9.3 && rvm install 2.0.0
 
-## Some gems to install
+## Quelques gem à installer
 
     gem install therubyracer execjs compass rails sinatra
 
 ## Node
 
-### Install
+### Installation
 
 ```
 cd ~/workspace
@@ -221,22 +219,22 @@ git checkout v0.10.18
 make
 sudo make install
 
-# make may eventually throw errors, in that case do:
+/* make peut potentiellement remonter des erreurs, si c'est le cas : */
 sudo apt-get install g++
-# then try again make and make install
+/* puis relancer make et make install */
 ```
 
-### Some modules
+### Ajout de modules
 
-    sudo npm install -g express coffee-script bower grunt-cli jslint nodemon sails
+    sudo npm install -g express coffee-script bower grunt-cli jslint nodemon
 
 ## Postgresql
 
-### Install
+### Installation
 
     sudo apt-get install postgresql
 
-### Create new user
+### Création d'un nouvel utilisateur
 
 ```
 sudo -i -u postgres
@@ -254,9 +252,9 @@ exit
 ```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 sudo nano /etc/apt/sources.list.d/10gen.list
-# Write:
+/* Ecrire : */
 deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
-# End
+/* Fin */
 sudo apt-get update
 sudo apt-get install mongodb-10gen
 ```
@@ -272,7 +270,7 @@ sudo apt-get install mongodb-10gen
 
 ### Settings
 
-Replace config file *Preferences > Settings - User* with:
+Remplacer le contenu du fichier *Preferences > Settings - User* par :
 
 ```javascript
 // Settings in here override those in "Default/Preferences.sublime-settings", and
@@ -302,7 +300,7 @@ Replace config file *Preferences > Settings - User* with:
 }
 ```
 
-Replace config file *Preferences > Key Binding - User* with:
+Remplacer le contenu du fichier *Preferences > Key Binding - User* par :
 
 ```javascript
 [
@@ -391,13 +389,13 @@ Replace config file *Preferences > Key Binding - User* with:
 
 ### Package Control
 
-Run command:
+Rentrer la commande :
 
     import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
 
-If an error occurs, you need to [download the binary package](http://sublime.wbond.net/Package%20Control.sublime-package) and move it to *Installed Packages* at `$HOME/.config/sublime-text-2`. Restart Sublime Text.
+Si un problème se produit, ce qui semble être fréquent depuis quelques temps, il faut [télécharger le binaire du package](http://sublime.wbond.net/Package%20Control.sublime-package)  puis le déplacer dans le dossier "Installed Packages" du répertoire de configuration de Sublime Text (voir `$HOME/.config`). Redémarrer Sublime.
 
-If you're bihind a proxy, you need to edit the config file ùPreferences > Package Settings > Package Control > Settings - User* with:
+Si la connexion Internet subit un proxy, il faut configurer modifier le fichier *Preferences > Package Settings > Package Control > Settings - User* par :
 
 ```javascript
 {
@@ -415,15 +413,11 @@ If you're bihind a proxy, you need to edit the config file ùPreferences > Packa
 }
 ```
 
-### Some packages
+### Installer les packages
 
 - BracketHighlither
 - CoffeeScript
 - INI
-- JSONLint
-- SCSS
-- LESS
-- EJS
 - Markdown Preview
 - Open Recent Files
 - Trailing Spaces
@@ -438,7 +432,7 @@ If you're bihind a proxy, you need to edit the config file ùPreferences > Packa
 
 #### Sublime Linter
 
-Edit settings from *Settings - User de Sublime Linter* with:
+Éditer les *Settings - User de Sublime Linter* :
 ```javascript
 {
   "jshint_options":
@@ -465,7 +459,7 @@ Edit settings from *Settings - User de Sublime Linter* with:
 
 #### Git
 
-Edit settings from *Settings - User de Sublime Linter* with:
+Éditer les Settings - User de Sublime Linter :
 
 ```javascript
 {
@@ -476,7 +470,7 @@ Edit settings from *Settings - User de Sublime Linter* with:
 
 ## .bashrc
 
-Add the following aliases:
+Ajouter les alias suivants :
 
 ```
 alias ssh-portfolio='ssh ****@****'
@@ -577,7 +571,7 @@ t() {
 
     sudo apt-get install vim
     vim .vimrc
-    # Fill
+    /* Remplir */
     autocmd BufNewFile,BufRead *.json set ft=javascript
     scriptencoding utf-8
 
@@ -590,12 +584,13 @@ t() {
     set softtabstop=2
     set showmatch
 
-    " Ignore search case
+    " Prend pas en compte la casse dans la recherche
     set ic
 
+    " Si on utilise une majuscule dans la recherche, celle-ci redevient sensible à la casse
     set smartcase
 
-    " Remove white spaces with _s
+    " Supprime les blanc en fin de ligne avec la commande _s
     nmap _s :%s/\s\+$//<CR>
 
     " check php syntax with Ctrl + L
@@ -626,7 +621,7 @@ t() {
     " Reload .vimrc when we edit it
     au! BufWritePost .vimrc source %
 
-Comment pluggin for wim (add it into  ~/.vim/plugin/)
+Plugin de commentaire pour vim (à ajouter dans ~/.vim/plugin/)
 http://www.vim.org/scripts/script.php?script_id=1218
 
 ## OhMyZSH
@@ -635,34 +630,34 @@ http://www.vim.org/scripts/script.php?script_id=1218
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
     chsh -s $(which zsh) # Set ZSH default shell
 
-Add these lignes to ~/.zshrc
+Ajouter ces éléments au ~/.zshrc
 
 ```
-# Choose `candy` theme
-# Add Ruby 1.9.3 version into your PATH:
-# (replace `392` if you need)
-$HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3-p392@global/bin:$HOME/.rvm/rubies/ruby-1.9.3-p392/bin
-# Add RVM PATH:
+# Choisir le theme `candy`
+# Ajouter la version 1.9.3 de ruby au PATH :
+# (remplacer `392` si besoin)
+/home/remy/.rvm/gems/ruby-1.9.3-p392/bin:/home/remy/.rvm/gems/ruby-1.9.3-p392@global/bin:/home/remy/.rvm/rubies/ruby-1.9.3-p392/bin
+# Ajouter les path RVM :
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
-# All all aliases from $HOME/.bashrc
+# Ajouter tous les alias de ~/.bashrc
 ```
 
 
-## System Mnitoring
+## Moniteur système
 
     sudo apt-get install indicator-multiload
 
-## Disable some apps from launching
+## Désactiver les lancements au démarrage
 
     sudo aptitude install sysv-rc-conf
     sudo sysv-rc-conf
 
-## Some other softwares
+## Installer d'autres logiciels
 
 ### Skype
 
-From Skype website.
+Via le site de skype.
 
 ### Filezilla
 
@@ -684,23 +679,24 @@ From Skype website.
 
     sudo apt-get install virtualbox
 
-### Unity shortcuts manager
+### Raccourcis Unity
 
     sudo apt-get install alacarte
 
-## Other
+## Autres
 
-- Configure Twitter with Gwibber (install it if not already)
-- System Parameters > Privacy : remove bottom inputs.
+- Configurer Twitter avec Gwibber (l'installer si pas déjà fait)
+- Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
 
-### Nautilus from 13.04
+### Nautilus à partir de 13.04
 
-Enable Backspace:
+Activer le Backspace pour revenir en arrière :
 
     echo '(gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")' >> ~/.config/nautilus/accels
 
 
-## TODO:
+## Points à éclaircir :
 
-- No notifications from Friends-app
-- Check oh-my-zsh installation always works
+- Skype marche malgré pas de version pour 13.04 ?
+- Pas de notification pour Friends-app
+- Vérifier que install oh-my-zsh marche tout le temps
