@@ -473,6 +473,9 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 Ajouter les alias suivants :
 
 ```
+# Node Modules
+PATH=./node_modules/bin:$PATH
+
 alias ssh-portfolio='ssh ****@****'
 alias sbl='~/Logi/Sublime\ Text\ 2/sublime_text'
 alias dropbox='~/.dropbox-dist/dropboxd'
@@ -640,6 +643,8 @@ Ajouter ces éléments au ~/.zshrc
 # Ajouter les path RVM :
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
+# Node Modules
+PATH=./node_modules/bin:$PATH
 # Ajouter tous les alias de ~/.bashrc
 ```
 

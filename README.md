@@ -479,6 +479,9 @@ Edit settings from *Settings - User de Sublime Linter* with:
 Add the following aliases:
 
 ```
+# Node Modules
+PATH=./node_modules/bin:$PATH
+
 alias ssh-portfolio='ssh ****@****'
 alias sbl='~/Logi/Sublime\ Text\ 2/sublime_text'
 alias dropbox='~/.dropbox-dist/dropboxd'
@@ -645,6 +648,8 @@ $HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3-p392@global/bin:$
 # Add RVM PATH:
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
+# Node Modules
+PATH=./node_modules/bin:$PATH
 # All all aliases from $HOME/.bashrc
 ```
 
