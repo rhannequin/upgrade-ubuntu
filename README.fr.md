@@ -217,6 +217,14 @@ Si Ruby non installé
 
     gem install therubyracer execjs compass rails sinatra
 
+Test de rails
+
+    rails -v
+
+Si rails ne semble pas installé (Rails is not currently installed on this system...) ajouter la ligne suivante à la fin du fichier ~/.bashrc
+
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
 ## Node
 
 ### Installation

@@ -218,6 +218,14 @@ Of Ruby is not installed
 
     gem install therubyracer execjs compass rails sinatra
 
+Try
+
+    rails -v
+
+If it doesn't work (Rails is not currently installed on this system...) add following line to ~/.bashrc at the end
+
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
 ## Node
 
 ### Install
