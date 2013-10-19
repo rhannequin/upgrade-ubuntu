@@ -78,6 +78,8 @@ cd ~
 ssh-keygen -t rsa
 ```
 
+You should also install openssh-server: `sudo apt-get install openssh-server`
+
 /!\ Don't forget to add you public key to your Github and/or Bitbucket accounts.
 
 ## GIT
@@ -116,7 +118,7 @@ Add the following instructions:
 ### Check it
 
 ```
-mkdir workspace github bitbucket
+cd ~/workspace && mkdir github bitbucket
 cd github
 git clone git@github.com:rhannequin/upgrade-ubuntu.git
 ```
@@ -137,18 +139,18 @@ TODO: ctrl+tab, backspace
 
 ## Java
 
-[Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u9 JDK.
+[Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u45 JDK.
 
 ```
 sudo mkdir /usr/lib/jvm
 cd /usr/lib/jvm
-sudo tar xvzf ~/jre-7u4-linux-*.tar.gz
-sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_04/bin/java 1
-sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_04/bin/javac 1
-sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_04/bin/javaws 1
+sudo tar xvzf ~/jre-7u45-linux-*.tar.gz
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_45/bin/java 1
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_45/bin/javac 1
+sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_45/bin/javaws 1
 # 64 bits only
-# sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/amd64/libjavaplugin_jni.so 1
-sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/i586/libjavaplugin_jni.so 1
+# sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_45/jre/lib/amd64/libjavaplugin_jni.so 1
+sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_45/jre/lib/i586/libjavaplugin_jni.so 1
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 sudo update-alternatives --config javaws
@@ -161,11 +163,11 @@ sudo update-alternatives --config mozilla-javaplugin.so
 
 32 bits
 
-    cd ~ && wget -0 - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+    cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 
 64 bits
 
-    cd ~ && wget -0 - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+    cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
 Start dropbow
 
@@ -173,15 +175,27 @@ Start dropbow
 
 ## Ruby with rbenv
 
+### Requirements for Rails
+
+In order to install Ruby On Rails, you must install those packages **before** installing Ruby.
+
+Seems to have some trouble with installing Rails on Ubuntu 13.10. This [stackoverflow post](http://stackoverflow.com/questions/5720484/how-to-solve-certificate-verify-failed-on-windows) is a temporary solution.
+
+```
+sudo apt-get install libyaml-dev zlib1g-dev libcurl4-openssl-dev libsqlite3-dev g++ gcc
+```
+
+Now all the requirements are installed, you can install rbenv and Ruby.
+
 ```
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-source ~/.zshrc
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 1.9.3-p392
-rbenv global 1.9.3-p392
+rbenv install 2.0.0-p247
+rbenv global 2.0.0-p247
 ```
 
 ## Ruby with RVM
@@ -189,10 +203,6 @@ rbenv global 1.9.3-p392
 aptitude, samba et curl installation
 
     sudo apt-get install aptitude samba curl
-
-Requirements for Rails
-
-    sudo apt-get install libyaml-dev zlib1g-dev libcurl4-openssl-dev libsqlite3-dev g++ gcc
 
 Install RVM with Ruby
 
@@ -216,10 +226,11 @@ Of Ruby is not installed
 cd ~/workspace
 git clone https://github.com/joyent/node.git
 cd node
-git checkout v0.10.18
-./configure
+git checkout v0.10.21
+mkdir ~/opt
+./configure --prefix=~/opt
 make
-sudo make install
+make install
 
 # make may eventually throw errors, in that case do:
 sudo apt-get install g++
@@ -228,7 +239,7 @@ sudo apt-get install g++
 
 ### Some modules
 
-    sudo npm install -g express coffee-script bower grunt-cli jslint nodemon sails
+    npm install -g express coffee-script bower grunt-cli jslint nodemon sails
 
 ## Postgresql
 
@@ -479,14 +490,14 @@ Edit settings from *Settings - User de Sublime Linter* with:
 Add the following aliases:
 
 ```
-# Node Modules
-PATH=./node_modules/bin:$PATH
+# Add ~/opt bins (for Node.js)
+export PATH=~/opt/bin:${PATH}
 
-alias ssh-portfolio='ssh ****@****'
-alias sbl='~/Logi/Sublime\ Text\ 2/sublime_text'
+# Add ./node_modules to access local node modules
+export PATH=${PATH}:./node_modules/.bin:
+
+alias sbl='~/opt/Sublime\ Text\ 2/sublime_text'
 alias dropbox='~/.dropbox-dist/dropboxd'
-alias sudo='sudo '
-alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
 # git log with more info and colors
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -515,9 +526,6 @@ alias al="alias | grep"
 
 # Ask it politely
 alias please="sudo"
-
-# If needed, create command ll
-alias ll='ls -l --color=auto'
 
 # Do lastest command with sudo
 alias sulast='sudo $(history -p !-1)'
@@ -580,7 +588,10 @@ t() {
 
     sudo apt-get install vim
     vim .vimrc
-    # Fill
+
+Fill
+
+    syntax enable
     autocmd BufNewFile,BufRead *.json set ft=javascript
     scriptencoding utf-8
 
@@ -592,6 +603,8 @@ t() {
     set shiftwidth=2
     set softtabstop=2
     set showmatch
+
+    set backupdir=~/tmp
 
     " Ignore search case
     set ic
@@ -631,27 +644,6 @@ t() {
 
 Comment pluggin for wim (add it into  ~/.vim/plugin/)
 http://www.vim.org/scripts/script.php?script_id=1218
-
-## OhMyZSH
-
-    sudo apt-get install zsh
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-    chsh -s $(which zsh) # Set ZSH default shell
-
-Add these lignes to ~/.zshrc
-
-```
-# Choose `candy` theme
-# Add Ruby 1.9.3 version into your PATH:
-# (replace `392` if you need)
-$HOME/.rvm/gems/ruby-1.9.3-p392/bin:$HOME/.rvm/gems/ruby-1.9.3-p392@global/bin:$HOME/.rvm/rubies/ruby-1.9.3-p392/bin
-# Add RVM PATH:
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
-# Node Modules
-PATH=./node_modules/bin:$PATH
-# All all aliases from $HOME/.bashrc
-```
 
 
 ## System Mnitoring
@@ -708,4 +700,3 @@ Enable Backspace:
 ## TODO:
 
 - No notifications from Friends-app
-- Check oh-my-zsh installation always works

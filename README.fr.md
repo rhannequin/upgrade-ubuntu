@@ -76,6 +76,8 @@ cd ~
 ssh-keygen -t rsa
 ```
 
+Il peut être intéressant d'installer openssh-server : `sudo apt-get install openssh-server`
+
 /!\ Se connecter à Github et Bitbucket et ajouter la clé publique SSH dans l'administration de compte.
 
 ## GIT
@@ -114,7 +116,7 @@ Ajouter le texte suivant :
 ### Vérification
 
 ```
-mkdir workspace github bitbucket
+cd ~/workspace && mkdir github bitbucket
 cd github
 git clone git@github.com:rhannequin/upgrade-ubuntu.git
 ```
@@ -135,17 +137,17 @@ TODO: ctrl+tab, backspace
 
 ## Java
 
-[Télécharger](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u9 JDK.
+[Télécharger](http://www.oracle.com/technetwork/java/javase/downloads/index.html) JAVA SE 7u45 JDK.
 
 ```
 sudo mkdir /usr/lib/jvm
 cd /usr/lib/jvm
-sudo tar xvzf ~/jre-7u4-linux-*.tar.gz
-sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_04/bin/java 1
-sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_04/bin/javac 1
-sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_04/bin/javaws 1
-/* Pour 64 bits */
-/* sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/amd64/libjavaplugin_jni.so 1 */
+sudo tar xvzf ~/jre-7u45-linux-*.tar.gz
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_45/bin/java 1
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_45/bin/javac 1
+sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_45/bin/javaws 1
+# Pour 64 bits
+# sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/amd64/libjavaplugin_jni.so 1
 sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_04/jre/lib/i586/libjavaplugin_jni.so 1
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
@@ -157,13 +159,13 @@ sudo update-alternatives --config mozilla-javaplugin.so
 
 ## Dropbox
 
-Pour 32 bits
+32 bits
 
-    cd ~ && wget -0 - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+    cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 
-Pour 64 bits
+64 bits
 
-    cd ~ && wget -0 - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+    cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
 Puis lancer
 
@@ -171,15 +173,28 @@ Puis lancer
 
 ## Ruby avec rbenv
 
+### Installation des pré-requis pour rails
+
+Afin d'installer Ruby On Rails, il est nécessaire d'installer les packages suivants **avant** d'installer Ruby.
+
+Il semble y avoir quelque problème pour installer Rails sur Ubuntu 13.10. Ce [post stackoverflow](http://stackoverflow.com/questions/5720484/how-to-solve-certificate-verify-failed-on-windows) est une solution temporaire.
+
+```
+
+Maintenant que les dépendances sont installées, vous pouvez installer rbenv et Ruby.
+
+sudo apt-get install libyaml-dev zlib1g-dev libcurl4-openssl-dev libsqlite3-dev g++ gcc
+```
+
 ```
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-source ~/.zshrc
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 1.9.3-p392
-rbenv global 1.9.3-p392
+rbenv install 2.0.0-p247
+rbenv global 2.0.0-p247
 ```
 
 ## Ruby avec RVM
@@ -187,10 +202,6 @@ rbenv global 1.9.3-p392
 Installation de aptitude, samba et curl
 
     sudo apt-get install aptitude samba curl
-
-Installation des pré-requis pour rails
-
-    sudo apt-get install libyaml-dev zlib1g-dev libcurl4-openssl-dev libsqlite3-dev g++ gcc
 
 Installation de RVM avec Ruby
 
@@ -214,10 +225,11 @@ Si Ruby non installé
 cd ~/workspace
 git clone https://github.com/joyent/node.git
 cd node
-git checkout v0.10.18
-./configure
+git checkout v0.10.21
+mkdir ~/opt
+./configure --prefix=~/opt
 make
-sudo make install
+make install
 
 /* make peut potentiellement remonter des erreurs, si c'est le cas : */
 sudo apt-get install g++
@@ -473,14 +485,11 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 Ajouter les alias suivants :
 
 ```
-# Node Modules
-PATH=./node_modules/bin:$PATH
+# Add ~/opt bins (for Node.js)
+export PATH=~/opt/bin:${PATH}
 
-alias ssh-portfolio='ssh ****@****'
-alias sbl='~/Logi/Sublime\ Text\ 2/sublime_text'
+alias sbl='~/opt/Sublime\ Text\ 2/sublime_text'
 alias dropbox='~/.dropbox-dist/dropboxd'
-alias sudo='sudo '
-alias free-memory='echo 3 | sudo tee /proc/sys/vm/drop_caches'
 
 # git log with more info and colors
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -509,9 +518,6 @@ alias al="alias | grep"
 
 # Ask it politely
 alias please="sudo"
-
-# If needed, create command ll
-alias ll='ls -l --color=auto'
 
 # Do lastest command with sudo
 alias sulast='sudo $(history -p !-1)'
@@ -574,7 +580,10 @@ t() {
 
     sudo apt-get install vim
     vim .vimrc
-    /* Remplir */
+
+Remplir
+
+    syntax enable
     autocmd BufNewFile,BufRead *.json set ft=javascript
     scriptencoding utf-8
 
@@ -586,6 +595,8 @@ t() {
     set shiftwidth=2
     set softtabstop=2
     set showmatch
+
+    set backupdir=~/tmp
 
     " Prend pas en compte la casse dans la recherche
     set ic
@@ -626,27 +637,6 @@ t() {
 
 Plugin de commentaire pour vim (à ajouter dans ~/.vim/plugin/)
 http://www.vim.org/scripts/script.php?script_id=1218
-
-## OhMyZSH
-
-    sudo apt-get install zsh
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-    chsh -s $(which zsh) # Set ZSH default shell
-
-Ajouter ces éléments au ~/.zshrc
-
-```
-# Choisir le theme `candy`
-# Ajouter la version 1.9.3 de ruby au PATH :
-# (remplacer `392` si besoin)
-/home/remy/.rvm/gems/ruby-1.9.3-p392/bin:/home/remy/.rvm/gems/ruby-1.9.3-p392@global/bin:/home/remy/.rvm/rubies/ruby-1.9.3-p392/bin
-# Ajouter les path RVM :
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Loads RVM
-# Node Modules
-PATH=./node_modules/bin:$PATH
-# Ajouter tous les alias de ~/.bashrc
-```
 
 
 ## Moniteur système
@@ -704,4 +694,3 @@ Activer le Backspace pour revenir en arrière :
 
 - Skype marche malgré pas de version pour 13.04 ?
 - Pas de notification pour Friends-app
-- Vérifier que install oh-my-zsh marche tout le temps
