@@ -20,8 +20,8 @@ sudo ln -s ~/workspace/ /workspace
 
 Go to *about:config* and update the followings :
 
-- browser.backspace_action to `0`
-- browser.ctrlTab.previews to `true`
+- `browser.backspace_action` to `0`
+- `browser.ctrlTab.previews` to `true`
 
 ### Plugins
 
@@ -34,6 +34,16 @@ Go to *about:config* and update the followings :
 - feedly
 - Firefox OS Simulator
 - ColorZilla
+
+**Tip**: to select Software Center for apt files from Firefox, select the following script: `/usr/bin/software-center`.
+
+### Use Aurora
+
+To use Aurora instead of the stable release:
+
+    sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+    sudo apt-get update
+    sudo apt-get install firefox
 
 ## LAMP
 
@@ -123,19 +133,10 @@ cd github
 git clone git@github.com:rhannequin/upgrade-ubuntu.git
 ```
 
-## Chrome
+## Chromium
 
-```
-/* 32 bits */
-$ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_i386.deb
-
-/* 64 bits */
-$ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_amd64.deb
-```
-
-[Download](https://www.google.com/intl/fr/chrome/browser/) .deb 32 or 64 bit and execute it.
-
-TODO: ctrl+tab, backspace
+    sudo apt-get install chromium-browser
+    # TODO: fix missing backspace key and ctrl+tab
 
 ## Java
 
@@ -495,6 +496,8 @@ Edit settings from *Settings - User de Sublime Linter* with:
 
 ## .bashrc
 
+### Aliases
+
 Add the following aliases:
 
 ```
@@ -591,6 +594,23 @@ t() {
     tail -f $1 | perl -pe "s/$2/\e[1;31;43m$&\e[0m/g"
 }
 ```
+
+### Prompt
+
+    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
+    cp ~/.bash-git-prompt/gitprompt.sh ~/.bash-git-prompt/gitprompt.custom.sh
+    nano ~/.bash-git-prompt/gitprompt.custom.sh
+
+At the end of `PROMPT_START` definition, add the following: `PROMPT_START="\[\e[32m\]\u@\h: ${PROMPT_START}"`
+
+    nano ~/.bashrc
+
+Add the following:
+
+    # Add git-bash-prompt
+    if [ -f ~/.bash-git-prompt/gitprompt.custom.sh ]; then
+        . ~/.bash-git-prompt/gitprompt.custom.sh
+    fi
 
 ## VIM
 
@@ -693,6 +713,15 @@ From Skype website.
 
     sudo apt-get install alacarte
 
+### Friends
+
+    sudo apt-get install dconf-tools
+    dconf-editor
+    # > com > canonical > friends
+    # Set interval to 1 and notifications to all
+
+TODO: Find a way to lauch it in background in startup.
+
 ## Other
 
 - Configure Twitter with Gwibber (install it if not already)
@@ -704,7 +733,9 @@ Enable Backspace:
 
     echo '(gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")' >> ~/.config/nautilus/accels
 
+### Move windows from 13.10
 
-## TODO:
+    sudo apt-get install compizconfig-settings-manager
+    ccsm
 
-- No notifications from Friends-app
+Go to Desktop Wall > Assignations > Move with window within the wall

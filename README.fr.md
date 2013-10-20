@@ -18,8 +18,8 @@ sudo ln -s ~/workspace/ /workspace
 
 Aller dans *about:config* et mettre les paramètres suivants :
 
-- browser.backspace_action à `0`
-- browser.ctrlTab.previews à `true`
+- `browser.backspace_action` à `0`
+- `browser.ctrlTab.previews` à `true`
 
 ### Installation des plugins
 
@@ -32,6 +32,16 @@ Aller dans *about:config* et mettre les paramètres suivants :
 - feedly
 - Firefox OS Simulator
 - ColorZilla
+
+**Tip** : pour sélectionner la Logitech pour les fichiers apt depuis Firefox, sélectionner le script suivant : `/usr/bin/software-center`.
+
+### Utiliser Aurora
+
+Pour utiliser Aurora au lieu de la version stable officielle :
+
+    sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+    sudo apt-get update
+    sudo apt-get install firefox
 
 ## LAMP
 
@@ -121,19 +131,10 @@ cd github
 git clone git@github.com:rhannequin/upgrade-ubuntu.git
 ```
 
-## Chrome
+## Chromium
 
-```
-/* 32 bits */
-$ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_i386.deb
-
-/* 64 bits */
-$ wget -c www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu//pool/main/u/udev/libudev0_175-0ubuntu13_amd64.deb
-```
-
-[Télécharger](https://www.google.com/intl/fr/chrome/browser/) le .deb 32 ou 64 bit et l'exécuter.
-
-TODO: ctrl+tab, backspace
+    sudo apt-get install chromium-browser
+    # TODO: fix missing backspace key and ctrl+tab
 
 ## Java
 
@@ -490,6 +491,8 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 
 ## .bashrc
 
+### Alias
+
 Ajouter les alias suivants :
 
 ```
@@ -583,6 +586,23 @@ t() {
     tail -f $1 | perl -pe "s/$2/\e[1;31;43m$&\e[0m/g"
 }
 ```
+
+### Prompt
+
+    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
+    cp ~/.bash-git-prompt/gitprompt.sh ~/.bash-git-prompt/gitprompt.custom.sh
+    nano ~/.bash-git-prompt/gitprompt.custom.sh
+
+Après la définition de `PROMPT_START`, ajouter la ligne suivante : `PROMPT_START="\[\e[32m\]\u@\h: ${PROMPT_START}"`
+
+    nano ~/.bashrc
+
+Ajouter les lignes suivantes :
+
+    # Add git-bash-prompt
+    if [ -f ~/.bash-git-prompt/gitprompt.custom.sh ]; then
+        . ~/.bash-git-prompt/gitprompt.custom.sh
+    fi
 
 ## VIM
 
@@ -686,6 +706,13 @@ Via le site de skype.
 
     sudo apt-get install alacarte
 
+### Friends
+
+    sudo apt-get install dconf-tools
+    dconf-editor
+    # > com > canonical > friends
+    # Mettre interval à 1 et notifications à all
+
 ## Autres
 
 - Configurer Twitter avec Gwibber (l'installer si pas déjà fait)
@@ -697,8 +724,9 @@ Activer le Backspace pour revenir en arrière :
 
     echo '(gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")' >> ~/.config/nautilus/accels
 
+### Déplacer les fenêtres à partir de 13.10
 
-## Points à éclaircir :
+    sudo apt-get install compizconfig-settings-manager
+    ccsm
 
-- Skype marche malgré pas de version pour 13.04 ?
-- Pas de notification pour Friends-app
+Aller dans Desktop Wall > Assignations > Move with window within the wall
