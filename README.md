@@ -218,14 +218,17 @@ Of Ruby is not installed
 ## Some gems to install
 
     gem install therubyracer execjs compass rails sinatra
+    # Only for rbenv
+    rbenv rehash
 
 Try
 
     rails -v
 
-If it doesn't work (Rails is not currently installed on this system...) add following line to ~/.bashrc at the end
+If it doesn't work with RVM installed (Rails is not currently installed on this system...) add following line to ~/.bashrc at the end
 
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
 
 ## Node
 
@@ -236,8 +239,8 @@ cd ~/workspace
 git clone https://github.com/joyent/node.git
 cd node
 git checkout v0.10.21
-mkdir ~/opt
-./configure --prefix=~/opt
+mkdir ~/opt && mkdir ~/opt/node
+./configure --prefix=~/opt/node
 make
 make install
 
@@ -269,14 +272,17 @@ ALTER USER rhannequin WITH ENCRYPTED PASSWORD '****';
 exit
 ```
 
+### Pgadmin
+
+`sudo apt-get install pgadmin3`
+
+
 ## Mongo
 
 ```
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 sudo nano /etc/apt/sources.list.d/10gen.list
-# Write:
-deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
-# End
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
 sudo apt-get update
 sudo apt-get install mongodb-10gen
 ```
@@ -485,7 +491,7 @@ Edit settings from *Settings - User de Sublime Linter* with:
 
 #### Git
 
-Edit settings from *Settings - User de Sublime Linter* with:
+Edit settings from *Settings - User from Git* with:
 
 ```javascript
 {
@@ -502,7 +508,8 @@ Add the following aliases:
 
 ```
 # Add ~/opt bins (for Node.js)
-export PATH=~/opt/bin:${PATH}
+export PATH=~/opt/node/bin:${PATH}
+export PATH="./node_modules/bin:${PATH}"
 
 # Add ./node_modules to access local node modules
 export PATH=${PATH}:./node_modules/.bin:
@@ -526,11 +533,11 @@ alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias ifconfig-ext='curl ifconfig.me'
 
 # Quick back directory
-alias ..1='cd ..'
-alias ..2='cd ../../../'
-alias ..3='cd ../../../../'
-alias ..4='cd ../../../../'
-alias ..5='cd ../../../../../'
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
 
 # Check is alias exists
 alias al="alias | grep"
@@ -615,28 +622,86 @@ Add the following:
 ## VIM
 
     sudo apt-get install vim
+    mkdir ~/.vim && mkdir ~/.vim/bundle
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     vim .vimrc
 
 Fill
 
-    syntax enable
-    autocmd BufNewFile,BufRead *.json set ft=javascript
-    scriptencoding utf-8
+    " Vundle {{{
+    set nocompatible
+    filetype off
 
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+
+    " Bundles:
+    " let Vundle manage Vundle
+    Bundle 'gmarik/vundle'
+
+    Bundle 'maksimr/vim-jsbeautify'
+    Bundle 'jelera/vim-javascript-syntax'
+    Bundle 'scrooloose/nerdcommenter'
+
+    " Colorschemes
+    Bundle 'nanotech/jellybeans.vim'
+
+    filetype plugin indent on
+    " }}}
+
+
+    " JavaScript syntax for JSON files
+    autocmd BufNewFile,BufRead *.json set ft=javascript
+    " UTF-8 as default encoding
+    scriptencoding utf-8
+    set encoding=utf-8
+    set fileencoding=utf-8
+
+    " Display useless characters
     set listchars=nbsp:¤,tab:>-,extends:>,precedes:<,trail:·
+    " See the difference between tabs and spaces and for trailing blanks
     set list
 
+    " Use the appropriate number of spaces to insert a tab
     set expandtab
+    " Number of spaces that a tab in the file counts for
     set tabstop=2
+    " Number of spaces to use for each step of (auto)indent
     set shiftwidth=2
+    " Number of spaces that a <Tab> counts for while performing editing operations
     set softtabstop=2
+    " When a bracket is inserted, briefly jump to the matching one
     set showmatch
 
-    set backupdir=~/tmp
+    " Backup
+    set backup
+    set backupdir=/tmp
+    set directory=/tmp
 
     " Ignore search case
     set ic
 
+    " The syntax with this name is loaded
+    syntax on
+    " Use 256 colors in Console mode if we think the terminal supports it
+    if &term =~? 'mlterm\|xterm'
+      set t_Co=256
+    endif
+
+    " Define color scheme
+    colorscheme jellybeans
+
+    " Show the line number relative to the line with the cursor in front of each line
+    set relativenumber
+    autocmd InsertEnter * :set number
+    autocmd InsertLeave * :set relativenumber
+
+    " Redefine <Leader> to ","
+    let mapleader= ","
+    " Set 300ms to fire keystroke
+    set tm=300
+
+    " Override the 'ignorecase' option if the search pattern contains upper case characters
     set smartcase
 
     " Remove white spaces with _s
@@ -649,9 +714,6 @@ Fill
     " Use Q for formatting the current paragraph (or selection)
     vmap Q gq
     nmap Q gqap
-
-    set encoding=utf-8
-    set fileencoding=utf-8
 
     if has("autocmd")
       filetype plugin indent on
@@ -670,13 +732,9 @@ Fill
     " Reload .vimrc when we edit it
     au! BufWritePost .vimrc source %
 
-Comment pluggin for wim (add it into  ~/.vim/plugin/)
-http://www.vim.org/scripts/script.php?script_id=1218
 
+Then run `:BundleInstall`.
 
-## System Mnitoring
-
-    sudo apt-get install indicator-multiload
 
 ## Disable some apps from launching
 
@@ -685,37 +743,19 @@ http://www.vim.org/scripts/script.php?script_id=1218
 
 ## Some other softwares
 
+`sudo apt-get install indicator-multiload vlc flashplugin-installer rar gimp filezilla openvpn virtualbox alacarte`
+
 ### Skype
 
 From Skype website.
-
-### Filezilla
-
-    sudo apt-get install filezilla
-
-### VLC
-
-    sudo apt-get install vlc
 
 ### Heroku
 
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-### OpenVPN
-
-    sudo apt-get install openvpn
-
-### Virtualbox
-
-    sudo apt-get install virtualbox
-
-### Unity shortcuts manager
-
-    sudo apt-get install alacarte
-
 ### Friends
 
-    sudo apt-get install dconf-tools
+    sudo apt-get install friends-app dconf-tools
     dconf-editor
     # > com > canonical > friends
     # Set interval to 1 and notifications to all
