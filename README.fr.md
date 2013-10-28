@@ -104,24 +104,7 @@ sudo apt-get install git
 gedit ~/.gitconfig
 ```
 
-Ajouter le texte suivant :
-
-```
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-[user]
-  name = Rémy Hannequin
-  email = ***@***
-[alias]
-  ci = commit
-  co = checkout
-  st = status
-  br = branch
-[github]
-  user = rhannequin
-```
+Ajouter le texte suivant : voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
 ### Vérification
 
@@ -296,120 +279,9 @@ sudo apt-get install mongodb-10gen
 
 ### Settings
 
-Remplacer le contenu du fichier *Preferences > Settings - User* par :
+Remplacer le contenu du fichier *Preferences > Settings - User* par : voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
-```javascript
-// Settings in here override those in "Default/Preferences.sublime-settings", and
-// are overridden in turn by file type specific settings.
-{
-  // Characters that are considered to separate words
-  "word_separators": "./\\()\"'-:,.;<>~!@#%^&*|+=[]{}`~?",
-
-  // The number of spaces a tab is considered equal to
-  "tab_size": 2,
-
-  // Set to true to insert spaces when tab is pressed
-  "translate_tabs_to_spaces": true,
-
-  // If enabled, will highlight any line with a caret
-  "highlight_line": true,
-
-  // By default, shift+tab will only unindent if the selection spans
-  // multiple lines. When pressing shift+tab at other times, it'll insert a
-  // tab character - this allows tabs to be inserted when tab_completion is
-  // enabled. Set this to true to make shift+tab always unindent, instead of
-  // inserting tabs.
-  "shift_tab_unindent": true,
-
-  // Columns in which to display vertical rulers
-  "rulers": [80]
-}
-```
-
-Remplacer le contenu du fichier *Preferences > Key Binding - User* par :
-
-```javascript
-[
-  {
-    "keys": ["f12"],
-    "command": "reindent"
-  },
-  {
-    "keys": ["super+alt+&"],
-    "command": "set_layout",
-    "args":
-    {
-      "cols": [0.0, 1.0],
-      "rows": [0.0, 1.0],
-      "cells": [[0, 0, 1, 1]]
-    }
-  },
-  {
-    "keys": ["super+alt+é"],
-    "command": "set_layout",
-    "args":
-    {
-      "cols": [0.0, 0.5, 1.0],
-      "rows": [0.0, 1.0],
-      "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
-    }
-  },
-  {
-    "keys": ["super+alt+\""],
-    "command": "set_layout",
-    "args":
-    {
-      "cols": [0.0, 0.33, 0.66, 1.0],
-      "rows": [0.0, 1.0],
-      "cells": [[0, 0, 1, 1], [1, 0, 2, 1], [2, 0, 3, 1]]
-    }
-  },
-  {
-    "keys": ["super+alt+'"],
-    "command": "set_layout",
-    "args":
-    {
-      "cols": [0.0, 0.25, 0.5, 0.75, 1.0],
-      "rows": [0.0, 1.0],
-      "cells": [[0, 0, 1, 1], [1, 0, 2, 1], [2, 0, 3, 1], [3, 0, 4, 1]]
-    }
-  },
-  {
-    "keys": ["super+alt+2"],
-    "command": "set_layout",
-    "args":
-    {
-      "cols": [0.0, 1.0],
-      "rows": [0.0, 0.5, 1.0],
-      "cells": [[0, 0, 1, 1], [0, 1, 1, 2]]
-    }
-  },
-  {
-    "keys": ["super+alt+3"],
-    "command": "set_layout",
-    "args":
-    {
-      "cols": [0.0, 1.0],
-      "rows": [0.0, 0.33, 0.66, 1.0],
-      "cells": [[0, 0, 1, 1], [0, 1, 1, 2], [0, 2, 1, 3]]
-    }
-  },
-  {
-    "keys": ["super+alt+("],
-    "command": "set_layout",
-    "args":
-    {
-      "cols": [0.0, 0.5, 1.0],
-      "rows": [0.0, 0.5, 1.0],
-      "cells":
-      [
-        [0, 0, 1, 1], [1, 0, 2, 1],
-        [0, 1, 1, 2], [1, 1, 2, 2]
-      ]
-    }
-  }
-]
-```
+Remplacer le contenu du fichier *Preferences > Key Binding - User* par : voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
 
 
@@ -458,143 +330,18 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 
 #### Sublime Linter
 
-Éditer les *Settings - User de Sublime Linter* :
-```javascript
-{
-  "jshint_options":
-  {
-    "indent": 2,
-    "evil": true,
-    "regexdash": true,
-    "browser": true,
-    "wsh": true,
-    "trailing": true,
-    "sub": true,
-    "asi": true,
-    "lastsemic":true,
-    "laxcomma":true,
-    "eqeqeq":false,
-    "boss":true,
-    "curly":false,
-    "bitwise":false,
-    "forin":false,
-    "eqnull":true
-  }
-}
-```
+Éditer les *Settings - User de Sublime Linter* : voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
 #### Git
 
-Éditer les Settings - User de Git :
-
-```javascript
-{
-  "git_command": "/usr/bin/git"
-}
-```
+Éditer les Settings - User de Git : voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
 
 ## .bashrc
 
 ### Alias
 
-Ajouter les alias suivants :
-
-```
-# Add ~/opt bins (for Node.js)
-export PATH=~/opt/node/bin:${PATH}
-export PATH="./node_modules/bin:${PATH}"
-
-# Add ./node_modules to access local node modules
-export PATH=${PATH}:./node_modules/.bin:
-
-alias sbl='~/opt/Sublime\ Text\ 2/sublime_text'
-alias dropbox='~/.dropbox-dist/dropboxd'
-
-# git log with more info and colors
-alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-# Recursive directory listing
-alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
-
-# Quick apt update-upgrade-clean
-alias upgrade='sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean'
-
-# Create python server to this directory
-alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
-
-# Get external ip address
-alias ifconfig-ext='curl ifconfig.me'
-
-# Quick back directory
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
-
-# Check is alias exists
-alias al="alias | grep"
-
-# Ask it politely
-alias please="sudo"
-
-# Do lastest command with sudo
-alias sulast='sudo $(history -p !-1)'
-
-# Quick apt install
-alias install='sudo apt-get install'
-
-# Quci push
-alias gpm="git push origin master"
-
-# Warn if rm recursive or deleting more than 3 items
-alias rm='rm -I'
-
-
-### Functions ###
-
-# Create directory and go to it
-function mcd() {
-  mkdir -p "$1" && cd "$1";
-}
-
-# Find string in a file and replace it with another string
-findreplace(){
-    printf "Search: ${1}\n"
-    printf "Replace: ${2}\n"
-    printf "In: ${3}\n\n"
-
-    find . -name "*${3}" -type f | xargs perl -pi -e 's/${1}/${2}/g'
-}
-
-# Quick exctract
-extract () {
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
-}
-
-# Tail with search highlight
-t() {
-    tail -f $1 | perl -pe "s/$2/\e[1;31;43m$&\e[0m/g"
-}
-```
+Ajouter les alias suivants : voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
 ### Prompt
 
@@ -620,112 +367,7 @@ Ajouter les lignes suivantes :
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     vim .vimrc
 
-Remplir
-
-    " Vundle {{{
-    set nocompatible
-    filetype off
-
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-
-    " Bundles:
-    " let Vundle manage Vundle
-    Bundle 'gmarik/vundle'
-
-    Bundle 'maksimr/vim-jsbeautify'
-    Bundle 'jelera/vim-javascript-syntax'
-    Bundle 'scrooloose/nerdcommenter'
-
-    " Colorschemes
-    Bundle 'nanotech/jellybeans.vim'
-
-    filetype plugin indent on
-    " }}}
-
-
-    " JavaScript syntax for JSON files
-    autocmd BufNewFile,BufRead *.json set ft=javascript
-    " UTF-8 as default encoding
-    scriptencoding utf-8
-    set encoding=utf-8
-    set fileencoding=utf-8
-
-    " Display useless characters
-    set listchars=nbsp:¤,tab:>-,extends:>,precedes:<,trail:·
-    " See the difference between tabs and spaces and for trailing blanks
-    set list
-
-    " Use the appropriate number of spaces to insert a tab
-    set expandtab
-    " Number of spaces that a tab in the file counts for
-    set tabstop=2
-    " Number of spaces to use for each step of (auto)indent
-    set shiftwidth=2
-    " Number of spaces that a <Tab> counts for while performing editing operations
-    set softtabstop=2
-    " When a bracket is inserted, briefly jump to the matching one
-    set showmatch
-
-    " Backup
-    set backup
-    set backupdir=/tmp
-    set directory=/tmp
-
-    " Ignore search case
-    set ic
-
-    " The syntax with this name is loaded
-    syntax on
-    " Use 256 colors in Console mode if we think the terminal supports it
-    if &term =~? 'mlterm\|xterm'
-      set t_Co=256
-    endif
-
-    " Define color scheme
-    colorscheme jellybeans
-
-    " Show the line number relative to the line with the cursor in front of each line
-    set relativenumber
-    autocmd InsertEnter * :set number
-    autocmd InsertLeave * :set relativenumber
-
-    " Redefine <Leader> to ","
-    let mapleader= ","
-    " Set 300ms to fire keystroke
-    set tm=300
-
-    " Override the 'ignorecase' option if the search pattern contains upper case characters
-    set smartcase
-
-    " Remove white spaces with _s
-    nmap _s :%s/\s\+$//<CR>
-
-    " check php syntax with Ctrl + L
-    autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
-    autocmd FileType phtml noremap &lt;
-
-    " Use Q for formatting the current paragraph (or selection)
-    vmap Q gq
-    nmap Q gqap
-
-    if has("autocmd")
-      filetype plugin indent on
-      autocmd FileType text setlocal textwidth=78
-
-    " always jump to last edit position when opening a file
-      autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
-    endif
-
-    " Allow saving of files as sudo when I forgot to start vim using sudo.
-    cmap w!! w !sudo tee > /dev/null %
-
-    " Reload .vimrc when we edit it
-    au! BufWritePost .vimrc source %
-
+Voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
 Lancer `:BundleInstall`.
 
