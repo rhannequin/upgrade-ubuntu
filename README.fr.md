@@ -275,9 +275,15 @@ sudo apt-get install mongodb-10gen
 - Use system SSH client
 - I don't use a hosting provider
 
-## Sublime Text 2
+## Sublime Text 3
 
-### Settings
+### Installation
+
+    sudo add-apt-repository ppa:webupd8team/sublime-text-3
+    sudo apt-get update
+    sudo apt-get install sublime-text-installer
+
+### Paramètres
 
 Remplacer le contenu du fichier *Preferences > Settings - User* par : voir [https://github.com/rhannequin/dotfiles](https://github.com/rhannequin/dotfiles).
 
@@ -289,7 +295,7 @@ Remplacer le contenu du fichier *Preferences > Key Binding - User* par : voir [h
 
 Rentrer la commande :
 
-    import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
+    import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 Si un problème se produit, ce qui semble être fréquent depuis quelques temps, il faut [télécharger le binaire du package](http://sublime.wbond.net/Package%20Control.sublime-package)  puis le déplacer dans le dossier "Installed Packages" du répertoire de configuration de Sublime Text (voir `$HOME/.config`). Redémarrer Sublime.
 
@@ -314,19 +320,20 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 ### Installer les packages
 
 - BracketHighlither
-- CoffeeScript
+- Better CoffeeScript
 - INI
+- JSONLint
+- SCSS
 - Markdown Preview
-- Open Recent Files
 - Trailing Spaces
 - DocBlockr
-- Prefixr
 - Emmet
 - Git
 - Sublime Linter
 - SideBarEnhancements
 - Alignment
 - AdvancedNewFile
+- Theme - Flatland
 
 #### Sublime Linter
 

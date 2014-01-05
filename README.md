@@ -277,7 +277,13 @@ sudo apt-get install mongodb-10gen
 - Use system SSH client
 - I don't use a hosting provider
 
-## Sublime Text 2
+## Sublime Text 3
+
+### Install
+
+    sudo add-apt-repository ppa:webupd8team/sublime-text-3
+    sudo apt-get update
+    sudo apt-get install sublime-text-installer
 
 ### Settings
 
@@ -291,7 +297,7 @@ Replace config file *Preferences > Key Binding - User* with: see [https://github
 
 Run command:
 
-    import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
+    import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 If an error occurs, you need to [download the binary package](http://sublime.wbond.net/Package%20Control.sublime-package) and move it to *Installed Packages* at `$HOME/.config/sublime-text-2`. Restart Sublime Text.
 
@@ -316,23 +322,20 @@ If you're bihind a proxy, you need to edit the config file ùPreferences > Packa
 ### Some packages
 
 - BracketHighlither
-- CoffeeScript
+- Better CoffeeScript
 - INI
 - JSONLint
 - SCSS
-- LESS
-- EJS
 - Markdown Preview
-- Open Recent Files
 - Trailing Spaces
 - DocBlockr
-- Prefixr
 - Emmet
 - Git
 - Sublime Linter
 - SideBarEnhancements
 - Alignment
 - AdvancedNewFile
+- Theme - Flatland
 
 #### Sublime Linter
 
