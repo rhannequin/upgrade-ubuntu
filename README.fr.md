@@ -1,5 +1,29 @@
 # Upgrade Ubuntu
 
+## Sommaire
+
+* [Pré-requis](#pre-requis)
+* [Firefox](#firefox)
+* [LAMP](#lamp)
+* [SSH](#ssh)
+* [GIT](#git)
+* [Chromium](#chromium)
+* [Java](#java)
+* [Adobe Flash](#adobe-flash)
+* [Dropbox](#dropbox)
+* [Ruby](#ruby)
+* [Node](#node)
+* [PostgreSQL](#potsgresql)
+* [MongoDB](#mongodb)
+* [Sublime Text 3](#sublime-text-3)
+* [.bashrc](#bashrc)
+* [VIM](#vim)
+* [Désactiver les lancements au démarrage](#desactiver-les-lancements-au-demarrage)
+* [Créer des lanceurs personnalisés sur Unity](#creer-des-lanceurs-personnalises-sur-unity)
+* [Installer d'autres logiciels](#installer-d-autres-logiciels)
+* [Autres](#autres)
+
+
 ## Pré-requis
 
 Créer un dossier `workspace` dans le home.
@@ -173,12 +197,11 @@ sudo apt-get install libyaml-dev zlib1g-dev libcurl4-openssl-dev libsqlite3-dev 
 ```
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 source ~/.bashrc
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 2.0.0-p247
-rbenv global 2.0.0-p247
+git clone git@github.com:sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+rbenv install 2.1.0
+rbenv global 2.1.0
 ```
 
 ## Ruby avec RVM
@@ -195,7 +218,7 @@ Installation de RVM avec Ruby
 
 Si Ruby non installé
 
-    rvm install 1.9.3 && rvm install 2.0.0
+    rvm install 2.0.0 && rvm install 2.1.0
 
 ## Quelques gem à installer
 
@@ -235,7 +258,7 @@ sudo apt-get install g++
 
     sudo npm install -g express coffee-script bower grunt-cli jslint nodemon
 
-## Postgresql
+## PostgreSQL
 
 ### Installation
 
@@ -258,7 +281,7 @@ exit
 
 `sudo apt-get install pgadmin3`
 
-## Mongo
+## MongoDB
 
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
@@ -267,13 +290,6 @@ echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | 
 sudo apt-get update
 sudo apt-get install mongodb-10gen
 ```
-
-## SmartGit
-
-- Non-commercial use only
-- Git Executable: usr/bin/git
-- Use system SSH client
-- I don't use a hosting provider
 
 ## Sublime Text 3
 
@@ -384,9 +400,20 @@ Lancer `:BundleInstall`.
     sudo aptitude install sysv-rc-conf
     sudo sysv-rc-conf
 
+## Créer des lanceurs personnalisés sur Unity
+
+```
+sudo apt-get install gnome-panel
+sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
+```
+
 ## Installer d'autres logiciels
 
 `sudo apt-get install indicator-multiload vlc flashplugin-installer rar gimp filezilla openvpn virtualbox alacarte`
+
+### JetBrains
+
+Installer [IntteliJ IDEA](http://www.jetbrains.com/idea/download), [RubyMine](http://www.jetbrains.com/ruby/download) et [WebStorm](http://www.jetbrains.com/webstorm/download) depuis le site de JetBrains.
 
 ### Skype
 
@@ -405,7 +432,7 @@ Via le site de skype.
 
 ## Autres
 
-- Configurer Twitter avec Gwibber (l'installer si pas déjà fait)
+- Configurer Twitter
 - Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
 
 ### Nautilus à partir de 13.04
