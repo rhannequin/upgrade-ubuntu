@@ -63,11 +63,19 @@ Go to *about:config* and update the followings :
 
 ### Use Aurora
 
-To use Aurora instead of the stable release:
+To use Firefox Aurora instead of the stable release:
 
     sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
     sudo apt-get update
     sudo apt-get install firefox
+
+### Use Nightly
+
+To use install Firefox Nightly (doesn't override Stable/Aurora):
+
+    sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa
+    sudo apt-get install firefox-trunk
+
 
 ## LAMP
 
