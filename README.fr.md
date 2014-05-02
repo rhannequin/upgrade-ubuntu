@@ -4,11 +4,11 @@
 
 * [Pré-requis](#pre-requis)
 * [Firefox](#firefox)
+* [SSH](#ssh)
+* [GIT](#git)
 * [ZSH](#zsh)
 * [Vim](#vim)
 * [LAMP](#lamp)
-* [SSH](#ssh)
-* [GIT](#git)
 * [Chromium](#chromium)
 * [Java](#java)
 * [Adobe Flash](#adobe-flash)
@@ -77,6 +77,43 @@ Pour installer Firefox Nightly (n'écrase pas la version Stable/Aurora) :
     sudo apt-get install firefox-trunk
 
 
+## SSH
+
+```
+cd ~
+ssh-keygen -t rsa
+```
+
+Il peut être intéressant d'installer openssh-server : `sudo apt-get install openssh-server`
+
+/!\ Se connecter à Github et Bitbucket et ajouter la clé publique SSH dans l'administration de compte.
+
+
+## GIT
+
+### Installation
+
+```
+sudo apt-get install git
+```
+
+### Configuration
+
+```
+gedit ~/.gitconfig
+```
+
+Ajouter le texte suivant : voir [https://github.com/rhannequin/dotfiles/blob/master/gitconfig](https://github.com/rhannequin/dotfiles/blob/master/gitconfig).
+
+### Vérification
+
+```
+cd ~/workspace && mkdir github bitbucket
+cd github
+git clone git@github.com:rhannequin/upgrade-ubuntu.git
+```
+
+
 ## ZSH
 
 ```
@@ -134,43 +171,6 @@ Il est nécessaire d'activer certains modules avec les commandes ci-dessous :
 sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
 sudo a2enmod rewrite deflate
 sudo service apache2 restart
-```
-
-
-## SSH
-
-```
-cd ~
-ssh-keygen -t rsa
-```
-
-Il peut être intéressant d'installer openssh-server : `sudo apt-get install openssh-server`
-
-/!\ Se connecter à Github et Bitbucket et ajouter la clé publique SSH dans l'administration de compte.
-
-
-## GIT
-
-### Installation
-
-```
-sudo apt-get install git
-```
-
-### Configuration
-
-```
-gedit ~/.gitconfig
-```
-
-Ajouter le texte suivant : voir [https://github.com/rhannequin/dotfiles/blob/master/gitconfig](https://github.com/rhannequin/dotfiles/blob/master/gitconfig).
-
-### Vérification
-
-```
-cd ~/workspace && mkdir github bitbucket
-cd github
-git clone git@github.com:rhannequin/upgrade-ubuntu.git
 ```
 
 

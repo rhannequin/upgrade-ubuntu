@@ -6,11 +6,11 @@ Hey frogs, there is a French version of this project: [README.fr.md](https://git
 
 * [Requirements](#requirements)
 * [Firefox](#firefox)
+* [SSH](#ssh)
+* [GIT](#git)
 * [ZSH](#zsh)
 * [Vim](#vim)
 * [LAMP](#lamp)
-* [SSH](#ssh)
-* [GIT](#git)
 * [Chromium](#chromium)
 * [Java](#java)
 * [Adobe Flash](#adobe-flash)
@@ -79,6 +79,43 @@ To use install Firefox Nightly (doesn't override Stable/Aurora):
     sudo apt-get install firefox-trunk
 
 
+## SSH
+
+```
+cd ~
+ssh-keygen -t rsa
+```
+
+You should also install openssh-server: `sudo apt-get install openssh-server`
+
+/!\ Don't forget to add you public key to your Github and/or Bitbucket accounts.
+
+
+## GIT
+
+### Install
+
+```
+sudo apt-get install git
+```
+
+### Configuration
+
+```
+gedit ~/.gitconfig
+```
+
+Add the following instructions: see [https://github.com/rhannequin/dotfiles/blob/master/gitconfig](https://github.com/rhannequin/dotfiles/blob/master/gitconfig).
+
+### Check it
+
+```
+cd ~/workspace && mkdir github bitbucket
+cd github
+git clone git@github.com:rhannequin/upgrade-ubuntu.git
+```
+
+
 ## ZSH
 
 ```
@@ -136,43 +173,6 @@ You must activate the following modules:
 sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
 sudo a2enmod rewrite deflate
 sudo service apache2 restart
-```
-
-
-## SSH
-
-```
-cd ~
-ssh-keygen -t rsa
-```
-
-You should also install openssh-server: `sudo apt-get install openssh-server`
-
-/!\ Don't forget to add you public key to your Github and/or Bitbucket accounts.
-
-
-## GIT
-
-### Install
-
-```
-sudo apt-get install git
-```
-
-### Configuration
-
-```
-gedit ~/.gitconfig
-```
-
-Add the following instructions: see [https://github.com/rhannequin/dotfiles/blob/master/gitconfig](https://github.com/rhannequin/dotfiles/blob/master/gitconfig).
-
-### Check it
-
-```
-cd ~/workspace && mkdir github bitbucket
-cd github
-git clone git@github.com:rhannequin/upgrade-ubuntu.git
 ```
 
 
