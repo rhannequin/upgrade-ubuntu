@@ -190,12 +190,12 @@ git clone git@github.com:rhannequin/upgrade-ubuntu.git
 sudo mkdir /usr/lib/jvm
 cd /usr/lib/jvm
 sudo tar xvzf ~/jre-7u45-linux-*.tar.gz
-sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_45/bin/java 1
-sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_45/bin/javac 1
-sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_45/bin/javaws 1
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_55/bin/java 1
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_55/bin/javac 1
+sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_55/bin/javaws 1
 # 64 bits only
-# sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_45/jre/lib/amd64/libjavaplugin_jni.so 1
-sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_45/jre/lib/i586/libjavaplugin_jni.so 1
+# sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_55/jre/lib/amd64/libjavaplugin_jni.so 1
+sudo update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so /usr/lib/jvm/jdk1.7.0_55/jre/lib/i586/libjavaplugin_jni.so 1
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
 sudo update-alternatives --config javaws
@@ -299,7 +299,7 @@ psql
 CREATE USER rhannequin;
 ALTER ROLE rhannequin WITH CREATEDB;
 CREATE DATABASE first_pq_db OWNER rhannequin;
-ALTER USER rhannequin WITH ENCRYPTED PASSWORD '****';
+ALTER USER rhannequin WITH ENCRYPTED PASSWORD 'root';
 \q
 exit
 ```
@@ -326,14 +326,6 @@ sudo apt-get install mongodb-10gen
     sudo add-apt-repository ppa:webupd8team/sublime-text-3
     sudo apt-get update
     sudo apt-get install sublime-text-installer
-
-### Settings
-
-Replace config file *Preferences > Settings - User* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/settings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/settings).
-
-Replace config file *Preferences > Key Binding - User* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/key-bindings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/key-bindings).
-
-
 
 ### Package Control
 
@@ -366,31 +358,29 @@ If you're bihind a proxy, you need to edit the config file ùPreferences > Packa
 - BracketHighlither
 - Better CoffeeScript
 - INI
-- JSONLint
 - SCSS
 - Markdown Preview
 - Trailing Spaces
-- DocBlockr
 - Emmet
-- Git
 - Sublime Linter
 - SideBarEnhancements
-- Alignment
 - AdvancedNewFile
 - Theme - Flatland
+
+### Settings
+
+Replace config file *Preferences > Settings - User* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/settings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/settings).
+
+Replace config file *Preferences > Key Binding - User* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/key-bindings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/key-bindings).
 
 #### Sublime Linter
 
 Edit settings from *Settings - User de Sublime Linter* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings).
 
-#### Git
-
-Edit settings from *Settings - User from Git* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/git-settings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/git-settings).
-
 
 ## Disable some apps from launching
 
-    sudo aptitude install sysv-rc-conf
+    sudo apt-get install sysv-rc-conf
     sudo sysv-rc-conf
 
 
@@ -405,7 +395,7 @@ sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
 ## Some other softwares
 
 ```
-sudo apt-get install indicator-multiload vlc flashplugin-installer rar gimp filezilla openvpn virtualbox alacarte
+sudo apt-get install indicator-multiload vlc flashplugin-installer meld rar gimp filezilla openvpn virtualbox alacarte
 ```
 
 ### JetBrains
