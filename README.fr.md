@@ -130,12 +130,12 @@ Modifier le fichier `~/.zshrc` et remplacer son contenu par : [https://github.co
 
     sudo apt-get install vim
     mkdir ~/.vim && mkdir ~/.vim/bundle
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim .vimrc
 
 Voir [https://github.com/rhannequin/dotfiles/blob/master/vimrc](https://github.com/rhannequin/dotfiles/blob/master/vimrc).
 
-Lancer `:BundleInstall`.
+Lancer `:PluginInstall`.
 
 
 ## LAMP
@@ -403,6 +403,11 @@ Installer [IntteliJ IDEA](http://www.jetbrains.com/idea/download), [RubyMine](ht
 
 Via le site de skype.
 
+#### Problèmes avec la webcam depuis 14.04
+
+    sudo gedit /usr/share/applications/skype.desktop
+    > Exec=env PULSE_LATENCY_MSEC=60 LD_PRELOAD=/usr/lib/i386-linux-gnu/libv4l/v4l1compat.so skype %U
+
 ### Heroku
 
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
@@ -419,6 +424,12 @@ Via le site de skype.
 
 - Configurer Twitter
 - Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
+
+### Barre de notification pour 14.04 (systray)
+
+    sudo apt-add-repository ppa:gurqn/systray-trusty
+    sudo apt-get update
+    sudo apt-get upgrade
 
 ### Nautilus pour 13.04 et 13.10 (résolu sous 14.04)
 
