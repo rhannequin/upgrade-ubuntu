@@ -422,6 +422,10 @@ From Skype website.
     # > com > canonical > friends
     # Set interval to 1 and notifications to all
 
+### Steam
+
+Download the [Steam .deb package](http://media.steampowered.com/client/installer/steam.deb) and install it.
+
 
 ## Other
 
@@ -446,3 +450,4 @@ Enable Backspace:
     ccsm
 
 Go to Desktop Wall > Assignations > Move with window within the wall
+

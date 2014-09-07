@@ -419,6 +419,10 @@ Via le site de skype.
     # > com > canonical > friends
     # Mettre interval à 1 et notifications à all
 
+### Steam
+
+Télécharger le [paquet .dev de Steam](http://media.steampowered.com/client/installer/steam.deb) et l'installer.
+
 
 ## Autres
 
