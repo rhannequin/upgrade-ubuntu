@@ -222,30 +222,31 @@ Puis lancer
 
 ### Pré-requis
 
-Pour installer Ruby, il faut au préalable installer :
+Pour installer Ruby (et Rails), il faut au préalable installer :
 
 ```
-sudo apt-get install libssl-dev g++ autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt-get install build-essential libssl-dev g++ libsqlite3-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev
 ```
 
 ### Avec rbenv
 
 ```
-git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 git clone git@github.com:sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 2.1.1
-rbenv global 2.1.1
+rbenv install 2.2.3
+rbenv global 2.2.3
 ```
 
 ### Avec RVM
 
-    sudo apt-get install aptitude samba curl
+    sudo apt-get install curl
     \curl -L https://get.rvm.io | bash -s stable --ruby
     rvm requirements
-    rvm install 2.1.1
+    rvm install 2.2.3
 
 Assurez-vous d'avoir la ligne suivante dans votre `~/.bashrc`:
 
@@ -254,7 +255,6 @@ Assurez-vous d'avoir la ligne suivante dans votre `~/.bashrc`:
 ### Installation de Rails
 
 ```
-sudo apt-get install libsqlite3-dev libpq-dev
 gem install rails
 # Only for rbenv
 rbenv rehash
