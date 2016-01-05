@@ -395,6 +395,14 @@ sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
 sudo apt-get install indicator-multiload vlc flashplugin-installer meld rar gimp filezilla openvpn virtualbox alacarte
 ```
 
+### Redshift
+
+```
+sudo apt-get install redshift-gtk
+```
+
+Lancer l'application et vérifier qu'elle fonctionne. Eventuellement modifier les coordonnées géographiques.
+
 ### JetBrains
 
 Installer [IntteliJ IDEA](http://www.jetbrains.com/idea/download), [RubyMine](http://www.jetbrains.com/ruby/download) et [WebStorm](http://www.jetbrains.com/webstorm/download) depuis le site de JetBrains.
