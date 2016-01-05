@@ -14,7 +14,7 @@
 * [Adobe Flash](#adobe-flash)
 * [Dropbox](#dropbox)
 * [Ruby](#ruby)
-* [Node](#node)
+* [NodeJS](#nodejs)
 * [PostgreSQL](#postgresql)
 * [MongoDB](#mongodb)
 * [Sublime Text 3](#sublime-text-3)
@@ -262,24 +262,38 @@ rails -v
 ```
 
 
-## Node
+## NodeJS
 
-### Installation
+### Installation de [NVM](https://github.com/creationix/nvm)
 
 ```
-sudo apt-get install g++
-cd ~/workspace
-git clone https://github.com/joyent/node.git && cd node
-git checkout v0.10.26
-mkdir ~/opt && mkdir ~/opt/node
-./configure --prefix=~/opt/node
-make
-make install
+git clone https://github.com/creationix/nvm.git ~/.nvm
+cd ~/.nvm
+git checkout `git describe --abbrev=0 --tags`
+. ~/.nvm/nvm.sh
+```
+
+Ajouter ces lignes aux `~/.bashrc`, `~/.profile`, ou `~/.zshrc` :
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+```
+
+### Installation de NodeJS
+
+```
+nvm ls-remote # Trouver la dernière version stable
+nvm install 5.3.0
 ```
 
 ### Ajout de modules
 
-    npm install -g express coffee-script bower grunt-cli jslint nodemon sails
+Ces modules NPM peuvent être utiles :
+
+```
+npm install -g express coffee-script nodemon gulp
+```
 
 
 ## PostgreSQL

@@ -16,7 +16,7 @@ Hey frogs, there is a French version of this project: [README.fr.md](https://git
 * [Adobe Flash](#adobe-flash)
 * [Dropbox](#dropbox)
 * [Ruby](#ruby)
-* [Node](#node)
+* [NodeJS](#nodejs)
 * [PostgreSQL](#postgresql)
 * [MongoDB](#mongodb)
 * [Sublime Text 3](#sublime-text-3)
@@ -265,24 +265,38 @@ rails -v
 ```
 
 
-## Node
+## NodeJS
 
-### Install
+### Install [NVM](https://github.com/creationix/nvm)
 
 ```
-sudo apt-get install g++
-cd ~/workspace
-git clone https://github.com/joyent/node.git && cd node
-git checkout v0.10.26
-mkdir ~/opt && mkdir ~/opt/node
-./configure --prefix=~/opt/node
-make
-make install
+git clone https://github.com/creationix/nvm.git ~/.nvm
+cd ~/.nvm
+git checkout `git describe --abbrev=0 --tags`
+. ~/.nvm/nvm.sh
+```
+
+Add those lines to `~/.bashrc`, `~/.profile`, or `~/.zshrc`:
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+```
+
+### Install NodeJS
+
+```
+nvm ls-remote # Find the latest stable version
+nvm install 5.3.0
 ```
 
 ### Some modules
 
-    npm install -g express coffee-script bower grunt-cli jslint nodemon sails
+Those modules may be useful:
+
+```
+npm install -g express coffee-script nodemon gulp
+```
 
 
 ## PostgreSQL
