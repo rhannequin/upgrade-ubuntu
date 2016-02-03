@@ -393,6 +393,11 @@ Replace config file *Preferences > Key Binding - User* with: see [https://github
 Edit settings from *Settings - User de Sublime Linter* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings).
 
 
+## Atom
+
+Download `.deb` from [https://atom.io/download/deb](https://atom.io/download/deb).
+
+
 ## Disable some apps from launching
 
     sudo apt-get install sysv-rc-conf
@@ -410,7 +415,7 @@ sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
 ## Some other softwares
 
 ```
-sudo apt-get install indicator-multiload vlc flashplugin-installer meld rar gimp filezilla openvpn virtualbox alacarte
+sudo apt-get install indicator-multiload vlc meld rar gimp virtualbox
 ```
 
 ### Redshift

@@ -390,6 +390,11 @@ Remplacer le contenu du fichier *Preferences > Key Binding - User* par : voir [h
 Éditer les *Settings - User de Sublime Linter* : voir [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings).
 
 
+## Atom
+
+Télécharger le `.deb` depuis le site [https://atom.io/download/deb](https://atom.io/download/deb).
+
+
 ## Désactiver les lancements au démarrage
 
     sudo apt-get install sysv-rc-conf
@@ -407,7 +412,7 @@ sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
 ## Installer d'autres logiciels
 
 ```
-sudo apt-get install indicator-multiload vlc flashplugin-installer meld rar gimp filezilla openvpn virtualbox alacarte
+sudo apt-get install indicator-multiload vlc meld rar gimp virtualbox
 ```
 
 ### Redshift
