@@ -149,7 +149,7 @@ sudo apt-get install phpmyadmin
 /* sélectionner "apache2" pour reconfigurer automatiquement */
 /* sélectionner "oui" pour configurer phpmyadmin avec dbconfig-common */
 sudo ln -s /usr/share/phpmyadmin/ /var/www/phpmyadmin
-/* ATTENTION : ne jamais utiliser l'url /phpmyadmin ci dessus, replacez par exemple par /var/www/pma_xxx */
+/* ATTENTION : ne jamais utiliser /var/www/phpmyadmin ci dessus, replacez par exemple par /var/www/pma_xxx */
 sudo service apache2 restart
 ```
 
