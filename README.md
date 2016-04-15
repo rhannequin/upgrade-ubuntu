@@ -176,6 +176,13 @@ sudo a2enmod rewrite deflate
 sudo service apache2 restart
 ```
 
+#### Composer
+
+You like composer? Install it globally: 
+```
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+```
 
 ## Chromium
 
