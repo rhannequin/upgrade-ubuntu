@@ -321,6 +321,7 @@ sudo -i -u postgres
 psql
 CREATE USER rhannequin;
 ALTER ROLE rhannequin WITH CREATEDB;
+ALTER ROLE rhannequin WITH SUPERUSER;
 CREATE DATABASE first_pq_db OWNER rhannequin;
 ALTER USER rhannequin WITH ENCRYPTED PASSWORD 'root';
 \q
