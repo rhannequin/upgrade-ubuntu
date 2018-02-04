@@ -357,7 +357,7 @@ sudo apt-get install sublime-text
 
 ### Package Control
 
-If you're bihind a proxy, you need to edit the config file ùPreferences > Package Settings > Package Control > Settings - User* with:
+If you're behind a proxy, you need to edit the config file *Preferences > Package Settings > Package Control > Settings - User* with:
 
 ```javascript
 {
