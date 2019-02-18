@@ -26,7 +26,7 @@
 
 ## Pré-requis
 
-Créer un dossier `workspace` dans le home.
+Créer un dossier `workspace` dans le `$HOME`.
 
 ```
 mkdir ~/workspace
@@ -48,15 +48,8 @@ Aller dans *about:config* et mettre les paramètres suivants :
 
 ### Installation des plugins
 
-- Firebug
-- Live HTTP Headers
-- Web Developer
 - Adblock Plus
-- Pocket
-- JSONView
-- feedly
-- Firefox OS Simulator
-- ColorZilla
+- Ecosia
 
 **Tip** : pour sélectionner la Logitech pour les fichiers apt depuis Firefox, sélectionner le script suivant : `/usr/bin/software-center`.
 
@@ -185,7 +178,10 @@ sudo mv composer.phar /usr/local/bin/composer
 ## Chromium
 
     sudo apt-get install chromium-browser
-    # TODO: fix missing backspace key and ctrl+tab
+
+### Backspace pour retourner à la page précédente
+
+Installer l'extension `Backspace to go Back`.
 
 
 ## Java
@@ -206,6 +202,13 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 sudo update-alternatives --config javaws
 sudo update-alternatives --config mozilla-javaplugin.so
+```
+
+### OpenJDK
+
+```
+sudo apt-get install default-jre
+sudo apt-get install icedtea-plugin
 ```
 
 ## Adobe Flash
@@ -233,7 +236,8 @@ Puis lancer
 Pour installer Ruby (et Rails), il faut au préalable installer :
 
 ```
-sudo apt-get install build-essential libssl-dev g++ libsqlite3-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev
+sudo apt-get install build-essential libssl-dev g++ libsqlite3-dev libyaml-dev libreadline6-dev \
+zlib1g-dev libncurses5-dev
 ```
 
 ### Avec rbenv
@@ -286,14 +290,15 @@ Ajouter ces lignes aux `~/.bashrc`, `~/.profile`, ou `~/.zshrc` :
 
 ```
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
 ### Installation de NodeJS
 
 ```
 nvm ls-remote # Trouver la dernière version stable
-nvm install 5.3.0
+nvm install 10.15.0
 ```
 
 ### Ajout de modules
@@ -301,7 +306,7 @@ nvm install 5.3.0
 Ces modules NPM peuvent être utiles :
 
 ```
-npm install -g express coffee-script nodemon gulp
+npm install -g express create-react-app
 ```
 
 
@@ -345,20 +350,14 @@ sudo apt-get install -y mongodb-org
 ### Installation
 
 ```
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-sudo apt-get install apt-transport-https
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
 sudo apt-get update
 sudo apt-get install sublime-text
 ```
 
 ### Package Control
-
-Rentrer la commande :
-
-    import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
-
-Si un problème se produit, ce qui semble être fréquent depuis quelques temps, il faut [télécharger le binaire du package](http://sublime.wbond.net/Package%20Control.sublime-package)  puis le déplacer dans le dossier "Installed Packages" du répertoire de configuration de Sublime Text (voir `$HOME/.config`). Redémarrer Sublime.
 
 Si la connexion Internet subit un proxy, il faut configurer modifier le fichier *Preferences > Package Settings > Package Control > Settings - User* par :
 
@@ -381,8 +380,6 @@ Si la connexion Internet subit un proxy, il faut configurer modifier le fichier 
 ### Installer les packages
 
 - BracketHighlither
-- Better CoffeeScript
-- INI
 - SCSS
 - Markdown Preview
 - Trailing Spaces
@@ -442,23 +439,11 @@ Installer [IntteliJ IDEA](http://www.jetbrains.com/idea/download), [RubyMine](ht
 
 ### Skype
 
-Via le site de skype.
-
-#### Problèmes avec la webcam depuis 14.04
-
-    sudo gedit /usr/share/applications/skype.desktop
-    > Exec=env PULSE_LATENCY_MSEC=60 LD_PRELOAD=/usr/lib/i386-linux-gnu/libv4l/v4l1compat.so skype %U
+Via le [site](https://www.skype.com/fr/get-skype/) de skype.
 
 ### Heroku
 
-    wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-
-### Friends
-
-    sudo apt-get install friends-app dconf-tools
-    dconf-editor
-    # > com > canonical > friends
-    # Mettre interval à 1 et notifications à all
+    sudo snap install --classic heroku
 
 ### Steam
 
@@ -467,24 +452,4 @@ Télécharger le [paquet .dev de Steam](http://media.steampowered.com/client/ins
 
 ## Autres
 
-- Configurer Twitter
 - Paramètres Système > Vie privée : retirer "Enregistrer l'activité" et "Inclure les résultats de recherche".
-
-### Barre de notification pour 14.04 (systray)
-
-    sudo apt-add-repository ppa:gurqn/systray-trusty
-    sudo apt-get update
-    sudo apt-get upgrade
-
-### Nautilus pour 13.04 et 13.10 (résolu sous 14.04)
-
-Activer le Backspace pour revenir en arrière :
-
-    echo '(gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")' >> ~/.config/nautilus/accels
-
-### Déplacer les fenêtres pour 13.10 (résolu sous 14.04)
-
-    sudo apt-get install compizconfig-settings-manager
-    ccsm
-
-Aller dans Desktop Wall > Assignations > Move with window within the wall

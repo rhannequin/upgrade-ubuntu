@@ -28,7 +28,7 @@ Hey frogs, there is a French version of this project: [README.fr.md](https://git
 
 ## Requirements
 
-Create a `workspace` folder into $HOME.
+Create a `workspace` folder into `$HOME`.
 
 ```
 mkdir ~/workspace
@@ -50,21 +50,14 @@ Go to *about:config* and update the followings :
 
 ### Plugins
 
-- Firebug
-- Live HTTP Headers
-- Web Developer
 - Adblock Plus
-- Pocket
-- JSONView
-- feedly
-- Firefox OS Simulator
-- ColorZilla
+- Ecosia
 
 **Tip**: to select Software Center for apt files from Firefox, select the following script: `/usr/bin/software-center`.
 
 ### Use Aurora
 
-To use Firefox Aurora instead of the stable release:
+To install Firefox Aurora instead of the stable release:
 
     sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
     sudo apt-get update
@@ -72,7 +65,7 @@ To use Firefox Aurora instead of the stable release:
 
 ### Use Nightly
 
-To use install Firefox Nightly (doesn't override Stable/Aurora):
+To install Firefox Nightly (doesn't override Stable/Aurora):
 
     sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa
     sudo apt-get update
@@ -187,7 +180,10 @@ sudo mv composer.phar /usr/local/bin/composer
 ## Chromium
 
     sudo apt-get install chromium-browser
-    # TODO: fix missing backspace key and ctrl+tab
+
+### Backspace for back
+
+Install extension `Backspace to go Back`.
 
 
 ## Java
@@ -208,6 +204,13 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 sudo update-alternatives --config javaws
 sudo update-alternatives --config mozilla-javaplugin.so
+```
+
+### OpenJDK
+
+```
+sudo apt-get install default-jre
+sudo apt-get install icedtea-plugin
 ```
 
 
@@ -236,7 +239,8 @@ Start dropbow
 Requirements for Ruby (and Rails) are:
 
 ```
-sudo apt-get install build-essential libssl-dev g++ libsqlite3-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev
+sudo apt-get install build-essential libssl-dev g++ libsqlite3-dev libyaml-dev libreadline6-dev \
+zlib1g-dev libncurses5-dev
 ```
 
 ### With rbenv
@@ -248,8 +252,8 @@ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 git clone git@github.com:sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 2.2.3
-rbenv global 2.2.3
+rbenv install 2.6.1
+rbenv global 2.6.1
 ```
 
 ### With RVM
@@ -257,7 +261,7 @@ rbenv global 2.2.3
     sudo apt-get install curl
     \curl -L https://get.rvm.io | bash -s stable --ruby
     rvm requirements
-    rvm install 2.2.3
+    rvm install 2.6.1
 
 Make sure you have the following line in your `~/.bashrc`:
 
@@ -289,14 +293,15 @@ Add those lines to `~/.bashrc`, `~/.profile`, or `~/.zshrc`:
 
 ```
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
 ### Install NodeJS
 
 ```
 nvm ls-remote # Find the latest stable version
-nvm install 5.3.0
+nvm install 10.15.0
 ```
 
 ### Some modules
@@ -304,7 +309,7 @@ nvm install 5.3.0
 Those modules may be useful:
 
 ```
-npm install -g express coffee-script nodemon gulp
+npm install -g express create-react-app
 ```
 
 
@@ -348,9 +353,9 @@ sudo apt-get install -y mongodb-org
 ### Install
 
 ```
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-sudo apt-get install apt-transport-https
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
 sudo apt-get update
 sudo apt-get install sublime-text
 ```
@@ -378,8 +383,6 @@ If you're behind a proxy, you need to edit the config file *Preferences > Packag
 ### Some packages
 
 - BracketHighlither
-- Better CoffeeScript
-- INI
 - SCSS
 - Markdown Preview
 - Trailing Spaces
@@ -439,23 +442,11 @@ Install [IntteliJ IDEA](http://www.jetbrains.com/idea/download), [RubyMine](http
 
 ### Skype
 
-From Skype website.
-
-#### Troubles with webcam since 14.04
-
-    sudo gedit /usr/share/applications/skype.desktop
-    > Exec=env PULSE_LATENCY_MSEC=60 LD_PRELOAD=/usr/lib/i386-linux-gnu/libv4l/v4l1compat.so skype %U
+From Skype [website](https://www.skype.com/fr/get-skype/).
 
 ### Heroku
 
-    wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-
-### Friends
-
-    sudo apt-get install friends-app dconf-tools
-    dconf-editor
-    # > com > canonical > friends
-    # Set interval to 1 and notifications to all
+    sudo snap install --classic heroku
 
 ### Steam
 
@@ -464,25 +455,4 @@ Download the [Steam .deb package](http://media.steampowered.com/client/installer
 
 ## Other
 
-- Configure Twitter
 - System Parameters > Privacy : remove bottom inputs.
-
-### Notification bar for 14.04 (systray)
-
-    sudo apt-add-repository ppa:gurqn/systray-trusty
-    sudo apt-get update
-    sudo apt-get upgrade
-
-### Nautilus for 13.04 and 13.10 (fixed in 14.04)
-
-Enable Backspace:
-
-    echo '(gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")' >> ~/.config/nautilus/accels
-
-### Move windows for 13.10 (fixed in 14.04)
-
-    sudo apt-get install compizconfig-settings-manager
-    ccsm
-
-Go to Desktop Wall > Assignations > Move with window within the wall
-
