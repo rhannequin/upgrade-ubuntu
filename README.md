@@ -28,11 +28,10 @@ Hey frogs, there is a French version of this project: [README.fr.md](https://git
 
 ## Requirements
 
-Create a `workspace` folder into `$HOME`.
+Create a `code` folder into `$HOME`.
 
 ```
-mkdir ~/workspace
-sudo ln -s ~/workspace/ /workspace
+mkdir ~/code
 ```
 
 
@@ -43,10 +42,11 @@ sudo ln -s ~/workspace/ /workspace
 
 ### Keyboard configuration
 
+Enable most recent tab switch in Settings
+
 Go to *about:config* and update the followings :
 
 - `browser.backspace_action` to `0`
-- `browser.ctrlTab.previews` to `true`
 
 ### Plugins
 
