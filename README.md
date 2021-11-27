@@ -402,6 +402,25 @@ Replace config file *Preferences > Key Binding - User* with: see [https://github
 
 Edit settings from *Settings - User de Sublime Linter* with: see [https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings](https://github.com/rhannequin/dotfiles/blob/master/sublimetext/sublime-linter-settings).
 
+#### Two-fingers right click
+
+```
+sudo apt install gnome-tweaks
+gnome-tweaks
+```
+
+Go to "Keyboard & Mouse".
+
+#### Workspaces
+
+```
+gnome-tweaks
+```
+
+Go to "Workspaces" and enable 4 workspaces.
+
+Install "Workspace Matrix" Gnome extension and configure it to use 2 rows and 2 columns.
+
 
 ## Atom
 
