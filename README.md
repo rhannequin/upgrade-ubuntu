@@ -447,6 +447,10 @@ sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
 sudo apt-get install indicator-multiload vlc meld rar gimp virtualbox
 ```
 
+### Ubuntu 21.04
+
+`indicator-multiload` seems not to work since 20.04, instead install the Gnome Extension [system-monitor](https://extensions.gnome.org/extension/120/system-monitor/)
+
 ### Redshift
 
 ```
